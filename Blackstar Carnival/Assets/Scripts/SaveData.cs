@@ -1,25 +1,38 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BlackstarCarnival
 {
     
-    [CreateAssetMenu(fileName = "DefaultSaveData.asset", menuName = "BlackstarCarnival/Default SaveData")]
-    internal sealed class SaveData : ScriptableObject
+    [Serializable]
+    internal sealed class SaveData
     {
-        
+        internal SaveData(string name = "", byte[] icon = null, DateTime date = default, float3 playerPosition = default,
+            FaceDirection faceDirection = FaceDirection.North, uint starBucks = 0, string currentScene = "")
+        {
+            Name = name;
+            Icon = icon;
+            Date = date;
+            PlayerPosition = playerPosition;
+            FaceDirection = faceDirection;
+            StarBucks = starBucks;
+            CurrentScene = currentScene;
+        }
+
         #region Save Meta Data
         //TODO - Add some meta data
-        public string SaveName;
-        public Texture2D SaveIcon;
-        public DateTime SaveTime;
+        public string Name;
+        public byte[] Icon = {1}; // LIMITED TO 512x512
+        public DateTime Date;
         #endregion
         
         #region Player Data
-        public Vector3 playerPosition;
-        public FaceDirection faceDirection;
-        public uint starBucks;
-        public string currentScene;
+        public float3 PlayerPosition;
+        public FaceDirection FaceDirection;
+        public uint StarBucks;
+        public string CurrentScene;
         #endregion
         
         #region Dialogue Data
