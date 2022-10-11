@@ -49,6 +49,11 @@ namespace BlackstarCarnival
             using FileStream file = File.Create(Path.Combine(BasePath, saveData.Name + SaveFileExtension));
             await Task.Run(() => bf.Serialize(file, saveData));
         }
+        
+        public static void DeleteSave(SaveData saveData)
+        {
+            File.Delete(Path.Combine(BasePath, saveData.Name + SaveFileExtension));
+        }
 
     }
 }

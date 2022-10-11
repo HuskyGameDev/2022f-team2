@@ -22,7 +22,7 @@ public class LoadSetup : MonoBehaviour
         // Current only for testing
         await SaveUtility.SaveAsync(new SaveData("test"));
         await SaveUtility.SaveAsync(new SaveData("test2", null, DateTime.MaxValue));
-        await SaveUtility.SaveAsync(new SaveData("test2", null, DateTime.Today));
+        await SaveUtility.SaveAsync(new SaveData("test3", null, DateTime.Today));
         Debug.Log("Loading Saves");
         var saves= await SaveUtility.GetSortedSavesAsync();
         Debug.Log("Found " + saves.Length + " saves in" + Application.persistentDataPath);
@@ -30,7 +30,8 @@ public class LoadSetup : MonoBehaviour
         {
             var saveItem = Instantiate(SaveItemPrefab, ContentGameObject.transform);
             saveItem.name = save.Name;
-            saveItem.transform.parent = ContentGameObject.transform;
+            saveItem.transform.SetParent(ContentGameObject.transform);
+            saveItem.transform.GetComponent<SaveDataUI>().saveData = save;
             /*int d = 2;
             Texture2D texture = new Texture2D(d,d);
             texture.LoadRawTextureData(save.Icon);
