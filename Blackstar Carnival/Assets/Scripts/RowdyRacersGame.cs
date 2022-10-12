@@ -5,10 +5,22 @@ using UnityEngine.UI;
 
 public class RowdyRacersGame : MonoBehaviour
 {
-    
+
+    public GameObject panel;
+
+    public void Start()
+    {
+        panel = GameObject.Find("BettingPanel");
+        panel.SetActive(true);
+    }
+
+
     public void bet(int racer)
     {
         int winner = generateWinner();
+        
+        StartCoroutine(raceTime());
+
         if(racer == winner)
         {
             Debug.Log("You win");
@@ -25,4 +37,13 @@ public class RowdyRacersGame : MonoBehaviour
         Debug.Log("Winner is" + winner);
         return winner;
     }
+
+    IEnumerator raceTime()
+    {
+        panel.SetActive(false);
+        yield return new WaitForSeconds(5);
+        panel.SetActive(true);
+    }
+
+
 }
