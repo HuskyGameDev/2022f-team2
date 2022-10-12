@@ -25,39 +25,67 @@ public class RowdyRacersGame : MonoBehaviour
     public void bet(int racer)
     {
         //decide winner
-        int winner = generateWinner();
-
+        List<int> racerPositions = generatePositions();
+        
 
         //wait x seconds
-        StartCoroutine(raceTime(5));
+        StartCoroutine(raceTime());
 
         //play race animation in the meantime
         
         //display results
         resultPanel.SetActive(true);
 
-        if (racer == winner)
+        if (racer == racerPositions[0])
         {
-            resultText.text = $"You Win!";
+            resultText.text = $"You Win!\n";
+            Debug.Log($"{racerPositions[0]} {racerPositions[1]} {racerPositions[2]} {racerPositions[3]}");
+        }
+        else if (racer == racerPositions[1])
+        {
+            resultText.text = $"Second Place!\n Racer {racerPositions[0]} has won";
+            Debug.Log($"{racerPositions[0]} {racerPositions[1]} {racerPositions[2]} {racerPositions[3]}");
+        }
+        else if (racer == racerPositions[2])
+        {
+            resultText.text = $"Third Place!\n Racer {racerPositions[0]} has won";
+            Debug.Log($"{racerPositions[0]} {racerPositions[1]} {racerPositions[2]} {racerPositions[3]}");
         }
         else
         {
-            resultText.text = $"You Lost!\n Racer {winner} has won";
+            resultText.text = $"Last Place!\n Racer {racerPositions[0]} has won";
+            Debug.Log($"{racerPositions[0]} {racerPositions[1]} {racerPositions[2]} {racerPositions[3]}");
         }
 
     }
 
-    public int generateWinner()
+    public List<int> generatePositions()
     {
-        int winner = Random.Range(1, 5);
-        Debug.Log("Winner is " + winner);
-        return winner;
+        //indecies are races value is the place they finished in
+        int[] a = { 1, 2, 3, 4 };
+        List<int> positions = new List<int>( a );
+
+        
+        for(int i = 0; i < Random.Range(50,100); i++)
+        {
+            swap(Random.Range(0, 4), Random.Range(0, 4), positions);
+        }
+
+        Debug.Log("Winner is " + positions[0]);
+        return positions;
     }
 
-    IEnumerator raceTime(int time)
+    public void swap(int a, int b, List<int> list)
+    {
+        int temp = list[a];
+        list[a] = list[b];
+        list[b] = temp;
+    }
+
+    IEnumerator raceTime()
     {
         betPanel.SetActive(false);
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(5);
     }
 
     public void playAgain()
