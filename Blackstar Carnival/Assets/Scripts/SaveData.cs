@@ -20,6 +20,10 @@ namespace BlackstarCarnival
             StarBucks = starBucks;
             CurrentScene = currentScene;
         }
+        
+        public void Save() => SaveUtility.Save(this);
+        public void Load() => SaveUtility.Load(this);
+        public void Delete() => SaveUtility.Delete(this);
 
         #region Save Meta Data
         //TODO - Add some meta data

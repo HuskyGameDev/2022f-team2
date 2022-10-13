@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 namespace BlackstarCarnival
 {
-    internal sealed class SaveDataUI : MonoBehaviour
+    internal sealed class LoadGameUI : MonoBehaviour
     {
-        
+        [HideInInspector]
         public SaveData saveData;
-        
-        public void Save()
-        {
-            throw new System.NotImplementedException();
-        }
         
         public void Load()
         {
-            throw new System.NotImplementedException();
+            saveData.Load();
         }
         
         public void Delete()
         {
-            SaveUtility.DeleteSave(saveData);
+            saveData.Delete();
             Destroy(gameObject);
         }
+        
+        
     }
 }
