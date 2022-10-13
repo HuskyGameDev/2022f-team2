@@ -12,31 +12,36 @@ namespace BlackstarCarnival
         internal SaveData(string name = "", byte[] icon = null, DateTime date = default, float3 playerPosition = default,
             FaceDirection faceDirection = FaceDirection.North, uint starBucks = 0, string currentScene = "")
         {
-            Name = name;
-            Icon = icon;
-            Date = date;
-            PlayerPosition = playerPosition;
-            FaceDirection = faceDirection;
-            StarBucks = starBucks;
-            CurrentScene = currentScene;
+            this.name = name;
+            this.icon = icon;
+            this.date = date;
+            this.playerPosition = playerPosition;
+            this.faceDirection = faceDirection;
+            this.starBucks = starBucks;
+            this.currentScene = currentScene;
         }
         
         public void Save() => SaveUtility.Save(this);
         public void Load() => SaveUtility.Load(this);
-        public void Delete() => SaveUtility.Delete(this);
+
+        public void Delete()
+        {
+            LoadSetupUI.Saves.Remove(this);
+            SaveUtility.Delete(this);
+        } 
 
         #region Save Meta Data
         //TODO - Add some meta data
-        public string Name;
-        public byte[] Icon = {1}; // LIMITED TO 512x512
-        public DateTime Date;
+        public string name;
+        public byte[] icon; // LIMITED TO 512x512
+        public DateTime date;
         #endregion
         
         #region Player Data
-        public float3 PlayerPosition;
-        public FaceDirection FaceDirection;
-        public uint StarBucks;
-        public string CurrentScene;
+        public float3 playerPosition;
+        public FaceDirection faceDirection;
+        public uint starBucks;
+        public string currentScene;
         #endregion
         
         #region Dialogue Data

@@ -1,60 +1,46 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using BlackstarCarnival;
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class LoadSetupUI : MonoBehaviour
+namespace BlackstarCarnival
 {
-
-    public GameObject SaveItemPrefab;
-    public GameObject ContentGameObject;
-    private List<SaveData> _saveItems = new List<SaveData>();
-
-    // Start is called before the first frame update
-    void Start()
+    internal sealed class LoadSetupUI : MonoBehaviour
     {
-        // Current only for testing
-        SaveUtility.Save(new SaveData("test"));
-        SaveUtility.Save(new SaveData("test2", null, DateTime.MaxValue));
-        SaveUtility.Save(new SaveData("test3", null, DateTime.Today));
-        Refresh();
-    }
+        public GameObject SaveItemPrefab;
+        public GameObject ContentGameObject;
+        [HideInInspector]
+        public static List<SaveData> Saves = new List<SaveData>();
 
-    private void OnEnable()
-    {
-        Refresh();
-    }
-
-    void Refresh()
-    {
-        Debug.Log("Loading Saves");
-        var saves= SaveUtility.GetSortedSaves();
-        Debug.Log("Found " + saves.Length + " saves in" + Application.persistentDataPath);
-        foreach (var save in saves)
+        
+        private void OnEnable()
         {
-            if (_saveItems.Exists(x => x.Name == save.Name))
+            Refresh();
+        }
+
+        void Refresh()
+        {
+            int i = 0;
+            var saves= SaveUtility.GetSortedSaves();
+            foreach (var save in saves)
             {
-                Debug.Log("Save already exists");
-                continue;
+                if (Saves.Exists(x => x.name == save.name)) continue;
+                
+                Saves.Add(save);
+                var saveItem = Instantiate(SaveItemPrefab, ContentGameObject.transform);
+                saveItem.transform.SetSiblingIndex(i++);
+                saveItem.name = save.name;
+                saveItem.transform.SetParent(ContentGameObject.transform);
+                saveItem.transform.GetComponent<LoadGameUI>().saveData = save;
+                // TODO: Fix this
+                /*int d = 2;
+                Texture2D texture = new Texture2D(d,d);
+                texture.LoadRawTextureData(save.icon);
+                saveItem.transform.Find("Icon").GetComponent<UnityEngine.UI.Image>().sprite = Sprite.Create(texture, new Rect(0,0,d,d), new Vector2(0.5f,0.5f));*/
+                saveItem.transform.Find("Data").Find("Save Name").GetComponent<TextMeshProUGUI>().text = save.name;
+                saveItem.transform.Find("Data").Find("Save Date").GetComponent<TextMeshProUGUI>().text = save.date.ToString(CultureInfo.CurrentCulture);
             }
-            _saveItems.Add(save);
-            var saveItem = Instantiate(SaveItemPrefab, ContentGameObject.transform);
-            saveItem.name = save.Name;
-            saveItem.transform.SetParent(ContentGameObject.transform);
-            saveItem.transform.GetComponent<LoadGameUI>().saveData = save;
-            /*int d = 2;
-            Texture2D texture = new Texture2D(d,d);
-            texture.LoadRawTextureData(save.Icon);
-            saveItem.transform.Find("Icon").GetComponent<UnityEngine.UI.Image>().sprite = Sprite.Create(texture, new Rect(0,0,d,d), new Vector2(0.5f,0.5f));*/
-            saveItem.transform.Find("Data").Find("Save Name").GetComponent<TextMeshProUGUI>().text = save.Name;
-            
-            saveItem.transform.Find("Data").Find("Save Date").GetComponent<TextMeshProUGUI>().text = save.Date.ToString(CultureInfo.CurrentCulture);
         }
     }
 }

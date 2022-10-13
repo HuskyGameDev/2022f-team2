@@ -1,9 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using Mono.Collections.Generic;
 using UnityEngine;
 
 namespace BlackstarCarnival
@@ -15,12 +12,12 @@ namespace BlackstarCarnival
 
         #region Get Saves
         public static bool SaveExists(SaveData saveData) => 
-            File.Exists(Path.Combine(BasePath, saveData.Name + SaveFileExtension));
+            File.Exists(Path.Combine(BasePath, saveData.name + SaveFileExtension));
 
         public static SaveData[] GetSortedSaves()
         {
             var saveFiles = GetSaves();
-            Array.Sort(saveFiles, (a, b) => b.Date.CompareTo(a.Date));
+            Array.Sort(saveFiles, (a, b) => b.date.CompareTo(a.date));
             return saveFiles;
         }
         
@@ -47,7 +44,7 @@ namespace BlackstarCarnival
         public static void Save(SaveData saveData)
         {
             BinaryFormatter bf = new BinaryFormatter();
-            using FileStream file = File.Create(Path.Combine(BasePath, saveData.Name + SaveFileExtension));
+            using FileStream file = File.Create(Path.Combine(BasePath, saveData.name + SaveFileExtension));
             bf.Serialize(file, saveData);
         }
 
@@ -59,7 +56,7 @@ namespace BlackstarCarnival
         
         public static void Delete(SaveData saveData)
         {
-            File.Delete(Path.Combine(BasePath, saveData.Name + SaveFileExtension));
+            File.Delete(Path.Combine(BasePath, saveData.name + SaveFileExtension));
         }
 
     }
