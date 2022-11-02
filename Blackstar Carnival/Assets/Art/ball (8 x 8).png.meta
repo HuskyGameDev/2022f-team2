@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6cfb691c255096246ac9634b4707db06
+guid: 30fa019e888766d4c90a6476086680c0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: can-fixed_0
+      name: ball (8 x 8)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 19
-        height: 27
+        y: 8
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d01605a7191ed5547ae465538b48610d
-      internalID: -945314101
+      spriteID: 70a6ad3f30fd75745889a5c59f144eb0
+      internalID: 421780256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: can-fixed_1
+      name: ball (8 x 8)_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 0
         y: 0
-        width: 19
-        height: 27
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c12931fc90e232449a6ee2952bdf437c
-      internalID: -859367206
+      spriteID: 6ea0b7e7d1b447e4a987dfaf7c0ef64b
+      internalID: -594025746
       vertices: []
       indices: 
       edges: []
@@ -156,8 +156,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      can-fixed_1: -859367206
-      can-fixed_0: -945314101
+      ball (8 x 8)_0: 421780256
+      ball (8 x 8)_1: -594025746
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
