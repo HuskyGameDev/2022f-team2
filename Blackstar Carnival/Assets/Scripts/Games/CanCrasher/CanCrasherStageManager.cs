@@ -35,8 +35,8 @@ public class CanCrasherStageManager : MonoBehaviour
             _ballsLeft--;
         } else if (CanCrasherGameManager.Instance.GameState == CanCrasherGameState.Playing)
         {
-            CanCrasherGameManager.Instance.GameState = CanCrasherGameState.Lose;
-            // TODO : Show lose screen and play corresponding sound
+            CanCrasherGameManager.Instance.SetGameState(CanCrasherGameState.Lose);  
+            //TODO : Show lose screen and play corresponding sound
         }
     }
 
@@ -54,7 +54,7 @@ public class CanCrasherStageManager : MonoBehaviour
         // TODO: display balls and cans left
         if (_cansLeft <= 0 && CanCrasherGameManager.Instance.GameState == CanCrasherGameState.Playing)
         {
-            CanCrasherGameManager.Instance.GameState = CanCrasherGameState.Win;
+            CanCrasherGameManager.Instance.SetGameState(CanCrasherGameState.Win); 
             // TODO : Show win screen and play corresponding sound
         }
     }

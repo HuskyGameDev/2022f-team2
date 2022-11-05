@@ -42,8 +42,8 @@ public class CanCrasherSwipeController :  MonoBehaviour
         if (Input.GetMouseButtonUp(0) && canThrow)
         {
             _throwTime = Time.time - _throwTime;
-            _direction = (Input.mousePosition - _direction).normalized;
-            _direction.z = _throwSpeedZ / _throwTime;
+            _direction = (Input.mousePosition - _direction);
+            _direction.z = _throwSpeedZ / _throwTime * _direction.magnitude;
             canThrow = false;
             
             // UI Handling

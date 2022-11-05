@@ -6,6 +6,9 @@ namespace BlackstarCarnival.Games.CanCrasher
     {
         public static CanCrasherUIManager Instance;
         public GameObject SwipeArrow;
+        public GameObject WinPanel;
+        public GameObject LosePanel;
+        public GameObject MenuPanel;
         
         private void Awake()
         {
@@ -28,6 +31,34 @@ namespace BlackstarCarnival.Games.CanCrasher
         public void HideSwipeArrow()
         {
             SwipeArrow.SetActive(false);
+        }
+
+        public void ShowLosePanel()
+        {
+            LosePanel.SetActive(true);
+            WinPanel.SetActive(false);
+            MenuPanel.SetActive(false);
+        }
+
+        public void ShowWinPanel()
+        {
+            LosePanel.SetActive(false);
+            WinPanel.SetActive(true);
+            MenuPanel.SetActive(false);
+        }
+
+        public void ShowMenuPanel()
+        {
+            LosePanel.SetActive(false);
+            WinPanel.SetActive(false);
+            MenuPanel.SetActive(true);
+        }
+
+        public void HideAllPanels()
+        {
+            LosePanel.SetActive(false);
+            WinPanel.SetActive(false);
+            MenuPanel.SetActive(false);
         }
     }
 }
