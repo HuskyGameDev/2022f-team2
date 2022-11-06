@@ -23,7 +23,7 @@ public class Ball : MonoBehaviour
     void FixedUpdate()
     {
         var minDistance = 0f;
-        var maxDistance = 15f;
+        var maxDistance = 30f;
  
         var minScale = 0.6f;
         var maxScale = 1.2f;

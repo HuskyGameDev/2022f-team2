@@ -43,6 +43,8 @@ public class CanCrasherSwipeController :  MonoBehaviour
         {
             _throwTime = Time.time - _throwTime;
             _direction = (Input.mousePosition - _direction);
+            _direction.x /= Screen.width;
+            _direction.y /= Screen.height;
             _direction.z = _throwSpeedZ / _throwTime * _direction.magnitude;
             canThrow = false;
             
