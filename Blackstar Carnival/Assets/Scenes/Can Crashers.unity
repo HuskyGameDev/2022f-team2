@@ -1431,8 +1431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc658f1f2b514baa8a1dceebb3cb5c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _throwSpeed: 3
-  _throwSpeedZ: 0.42
+  _throwSpeed: 1500
+  _throwSpeedZ: 0.4
   Ball: {fileID: 0}
 --- !u!1 &972111581
 GameObject:
@@ -1757,7 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BallPrefab: {fileID: 9159946267030596084, guid: 7c8b06e27c9c0844fa80ca44d25566ba, type: 3}
   BallSpawnPoint: {fileID: 216268130}
-  Balls: 3
+  Balls: 300
   Cans: 15
 --- !u!1001 &1420839100
 PrefabInstance:
