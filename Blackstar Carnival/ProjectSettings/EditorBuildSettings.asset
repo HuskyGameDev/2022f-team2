@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 434903705935d974a8a740824233d3c7
   - enabled: 1
+    path: Assets/Scenes/Carnival.unity
+    guid: 7252a097f9da8514c954db10bc07e732
+  - enabled: 1
+    path: Assets/Scenes/Can Crashers.unity
+    guid: 46d13cf26ee423b4a9bc97152f8939c5
+  - enabled: 1
     path: Assets/Scenes/Rowdy Racers.unity
     guid: a31ca09a2ea35b4439e232f97577e099
   - enabled: 0

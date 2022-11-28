@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Can
   - Ball
+  - CC_Tent
+  - RR_Tent
   layers:
   - Default
   - TransparentFX
