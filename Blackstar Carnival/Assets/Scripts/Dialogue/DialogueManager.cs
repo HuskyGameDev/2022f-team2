@@ -10,12 +10,15 @@ public class DialogueManager : MonoBehaviour
 
     public TextMeshProUGUI characterNameText;
     public TextMeshProUGUI dialogueText;
+    public Image textBackground;
 
     void Start()
     {
         sentences = new Queue<string>();
         characterNameText.enabled = false;
         dialogueText.enabled = false;
+        textBackground.enabled = false;
+
     }
 
     void Update()
@@ -30,8 +33,12 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("conversation started");
 
+        //name
+        //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), dialogue.characterName);
+        
         characterNameText.enabled = true;
         dialogueText.enabled = true;
+        textBackground.enabled = true;
 
         sentences.Clear();
         characterNameText.text = dialogue.characterName;
@@ -53,6 +60,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
+        //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), sentence);
         dialogueText.text = sentence;
     }
 
@@ -62,5 +70,7 @@ public class DialogueManager : MonoBehaviour
         DialogueTrigger.inDialogue = false;
         characterNameText.enabled = false;
         dialogueText.enabled = false;
+        textBackground.enabled = false;
     }
+
 }
