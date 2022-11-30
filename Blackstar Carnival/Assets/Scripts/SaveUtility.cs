@@ -11,8 +11,8 @@ namespace BlackstarCarnival
         private const string SaveFileExtension = ".save";
 
         #region Get Saves
-        public static bool SaveExists(SaveData saveData) => 
-            File.Exists(Path.Combine(BasePath, saveData.name + SaveFileExtension));
+        public static bool SaveExistsWithName(string name) => 
+            File.Exists(Path.Combine(BasePath, name + SaveFileExtension));
 
         public static SaveData[] GetSortedSaves()
         {
@@ -36,7 +36,7 @@ namespace BlackstarCarnival
         
         private static SaveData GetSave(BinaryFormatter bf, string saveName)
         {
-            Debug.Log("Attempting to load save: " + saveName);
+            Debug.Log("Attempting to fetch save: " + saveName);
             using var file = File.Open(Path.Combine(BasePath, saveName), FileMode.Open);
             return bf.Deserialize(file) as SaveData;
         }
@@ -48,10 +48,10 @@ namespace BlackstarCarnival
             bf.Serialize(file, saveData);
         }
 
-        public static void Load(SaveData saveData)
+        public static SaveData Load(SaveData saveData)
         {
-            // TODO: Load player controller, scene, dialog flags, etc.
-            throw new NotImplementedException();
+            BinaryFormatter bf = new BinaryFormatter();
+            return GetSave(bf, saveData.name);
         }
         
         public static void Delete(SaveData saveData)

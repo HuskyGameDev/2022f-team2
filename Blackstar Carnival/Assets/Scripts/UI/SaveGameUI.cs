@@ -11,11 +11,15 @@ namespace BlackstarCarnival
         public GameObject InteractableTextField;
         public GameObject LoadGameMenu;
 
-        
+
         // TODO: Fix bug where no save name does not prevent save
         public void SaveGame()
         {
-            if (InteractableTextField.GetComponent<TextMeshProUGUI>().text.Equals("")) return;
+            var saveName = InteractableTextField.GetComponent<TextMeshProUGUI>().text;
+            if (saveName.Equals("")) return;
+            if (SaveUtility.SaveExistsWithName(saveName)) return;
+            
+            // TODO: Add data to save game.
             saveData.name = InteractableTextField.GetComponent<TextMeshProUGUI>().text;
             saveData.date = DateTime.Now;
             saveData.Save();

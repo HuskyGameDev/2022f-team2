@@ -1,5 +1,6 @@
 using System;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ namespace BlackstarCarnival
     [Serializable]
     internal sealed class SaveData
     {
+        [DoNotSerialize] public static SaveData Current { get; private set; }
         internal SaveData(string name = "", byte[] icon = null, DateTime date = default, float3 playerPosition = default,
             FaceDirection faceDirection = FaceDirection.North, uint starBucks = 0, string currentScene = "")
         {
@@ -22,7 +24,7 @@ namespace BlackstarCarnival
         }
         
         public void Save() => SaveUtility.Save(this);
-        public void Load() => SaveUtility.Load(this);
+        public void Load() => Current = SaveUtility.Load(this);
 
         public void Delete()
         {
