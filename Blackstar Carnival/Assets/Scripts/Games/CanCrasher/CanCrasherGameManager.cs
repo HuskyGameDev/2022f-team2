@@ -47,7 +47,7 @@ public class CanCrasherGameManager : MonoBehaviour
                 CanCrasherUIManager.Instance.ShowMenuPanel();
                 break;
             case CanCrasherGameState.Playing:
-                CanCrasherUIManager.Instance.HideAllPanels();
+                CanCrasherUIManager.Instance.ShowPlayingPanel();
                 break;
         }
     }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace BlackstarCarnival.Games.CanCrasher
 {
@@ -9,6 +10,8 @@ namespace BlackstarCarnival.Games.CanCrasher
         public GameObject WinPanel;
         public GameObject LosePanel;
         public GameObject MenuPanel;
+        public GameObject CansLeftPanel;
+        public GameObject BallsLeftPanel;
         
         private void Awake()
         {
@@ -35,30 +38,48 @@ namespace BlackstarCarnival.Games.CanCrasher
 
         public void ShowLosePanel()
         {
+            BallsLeftPanel.SetActive(false);
+            CansLeftPanel.SetActive(false);
             LosePanel.SetActive(true);
             WinPanel.SetActive(false);
-            MenuPanel.SetActive(false);
+            //MenuPanel.SetActive(false);
         }
 
         public void ShowWinPanel()
         {
+            BallsLeftPanel.SetActive(false);
+            CansLeftPanel.SetActive(false);
             LosePanel.SetActive(false);
             WinPanel.SetActive(true);
-            MenuPanel.SetActive(false);
+            //MenuPanel.SetActive(false);
         }
 
         public void ShowMenuPanel()
         {
+            BallsLeftPanel.SetActive(false);
+            CansLeftPanel.SetActive(false);
             LosePanel.SetActive(false);
             WinPanel.SetActive(false);
-            MenuPanel.SetActive(true);
+            //MenuPanel.SetActive(true);
         }
 
-        public void HideAllPanels()
+        public void ShowPlayingPanel()
         {
+            BallsLeftPanel.SetActive(true);
+            CansLeftPanel.SetActive(true);
             LosePanel.SetActive(false);
             WinPanel.SetActive(false);
-            MenuPanel.SetActive(false);
+            //MenuPanel.SetActive(false);
+        }
+        
+        public void UpdateCansLeft(int cansLeft)
+        {
+            CansLeftPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = cansLeft.ToString();
+        }
+        
+        public void UpdateBallsLeft(int ballsLeft)
+        {
+            BallsLeftPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ballsLeft.ToString();
         }
     }
 }

@@ -29,10 +29,11 @@ public class CanCrasherStageManager : MonoBehaviour
     public void SpawnBall()
     {
         CanCrasherUIManager.Instance.HideSwipeArrow();
-        if (_ballsLeft > 0)
+        if (_ballsLeft > 0 && _cansLeft > 0)
         {
             CanCrasherSwipeController.Instance.Ball = Instantiate(BallPrefab, BallSpawnPoint.position, Quaternion.identity);
             _ballsLeft--;
+            CanCrasherUIManager.Instance.UpdateBallsLeft(_ballsLeft);
         } else if (CanCrasherGameManager.Instance.GameState == CanCrasherGameState.Playing)
         {
             CanCrasherGameManager.Instance.SetGameState(CanCrasherGameState.Lose);  
@@ -44,6 +45,8 @@ public class CanCrasherStageManager : MonoBehaviour
     {
         _cansLeft = Cans;
         _ballsLeft = Balls;
+        CanCrasherUIManager.Instance.UpdateCansLeft(_cansLeft);
+        CanCrasherUIManager.Instance.UpdateBallsLeft(_ballsLeft);
         SpawnBall();
         // TODO: display balls and cans left
     }
@@ -51,6 +54,7 @@ public class CanCrasherStageManager : MonoBehaviour
     public void CanDestroyed()
     {
         _cansLeft--;
+        CanCrasherUIManager.Instance.UpdateCansLeft(_cansLeft);
         // TODO: display balls and cans left
         if (_cansLeft <= 0 && CanCrasherGameManager.Instance.GameState == CanCrasherGameState.Playing)
         {
