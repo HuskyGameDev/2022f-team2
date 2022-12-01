@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BlackstarCarnival
 {
@@ -6,7 +7,7 @@ namespace BlackstarCarnival
     {
         public void NewGame()
         {
-            throw new System.NotImplementedException();
+            SceneManager.LoadScene("Carnival");
         }
 
         public void ExitGame()

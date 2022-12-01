@@ -3099,7 +3099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BallPrefab: {fileID: 9159946267030596084, guid: 7c8b06e27c9c0844fa80ca44d25566ba, type: 3}
   BallSpawnPoint: {fileID: 216268130}
-  Balls: 300
+  Balls: 5
   Cans: 15
 --- !u!1001 &1420839100
 PrefabInstance:
