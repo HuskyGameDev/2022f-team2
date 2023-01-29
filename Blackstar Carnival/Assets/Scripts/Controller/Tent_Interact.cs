@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Tent_Interact : MonoBehaviour
 {
+    // can crashers
     bool cc = false;
+    // rowdy racers
     bool rr = false;
 
     void Update()
@@ -22,20 +24,21 @@ public class Tent_Interact : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    // https://www.youtube.com/watch?v=MfKyUkZb1V4
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // when the player "collects" a gem, the score increases
-        if(other.gameObject.tag.Equals("CC_Tent"))
+        if(collision.gameObject.tag.Equals("CC_Tent"))
         {
             cc = true;
         }
 
-        if(other.gameObject.tag.Equals("RR_Tent"))
+        if(collision.gameObject.tag.Equals("RR_Tent"))
         {
             rr = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnCollisionExit2D(Collision2D other)
     {
         cc = false;
         rr = false;

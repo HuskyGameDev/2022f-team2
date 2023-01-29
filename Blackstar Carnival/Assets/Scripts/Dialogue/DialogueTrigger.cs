@@ -10,7 +10,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp("e") && (inDialogue == false) && isColliding)
+        if (Input.GetKeyDown(KeyCode.E) && (inDialogue == false) && isColliding)
         {
             Debug.Log("Dialog started");
             inDialogue = true;
@@ -23,17 +23,17 @@ public class DialogueTrigger : MonoBehaviour
         FindObjectOfType<DialogueManager>().startDialogue(dialogue);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         
-        if (other.tag.Equals("Player"))
+        if (other.gameObject.tag.Equals("Player"))
         {
             Debug.Log("Colliding with Player");
             isColliding = true;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit2D(Collision2D other)
     {
         isColliding = false;
     }
