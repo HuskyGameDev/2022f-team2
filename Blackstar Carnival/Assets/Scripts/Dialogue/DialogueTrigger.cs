@@ -25,7 +25,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
         if (other.gameObject.tag.Equals("Player"))
         {
             Debug.Log("Colliding with Player");
