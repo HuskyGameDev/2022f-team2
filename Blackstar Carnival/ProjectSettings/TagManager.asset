@@ -16,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Beat
+  - Drum
   - 
   - 
   - 
@@ -45,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Drum
+    uniqueID: 2141452983
+    locked: 0
+  - name: Beat
+    uniqueID: 3294429473
     locked: 0

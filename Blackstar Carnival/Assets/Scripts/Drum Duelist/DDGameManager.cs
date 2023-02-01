@@ -14,20 +14,25 @@ public class DDGameManager : MonoBehaviour
     private TrackManager BlueTrackManager;
     private TrackManager GreenTrackManager;
     private TrackManager YellowTrackManager;
-
+    
+    int bottom = -160;
+    int top = 150;
+    
     // Start is called before the first frame update
     void Start()
     {
-        RedTrackManager = new TrackManager(GameObject.Find("Red Drum"), GameObject.Find("Red Beat"));
-        BlueTrackManager = new TrackManager(GameObject.Find("Blue Drum"), GameObject.Find("Blue Beat"));
-        GreenTrackManager = new TrackManager(GameObject.Find("Green Drum"), GameObject.Find("Green Beat"));
-        YellowTrackManager = new TrackManager(GameObject.Find("Yellow Drum"), GameObject.Find("Yellow Beat"));
+        RedTrackManager = new TrackManager(GameObject.Find("Red Drum"), GameObject.Find("Red Beat"), bottom, top, "red");
+        BlueTrackManager = new TrackManager(GameObject.Find("Blue Drum"), GameObject.Find("Blue Beat"), bottom, top, "blue");
+        GreenTrackManager = new TrackManager(GameObject.Find("Green Drum"), GameObject.Find("Green Beat"), bottom, top, "green");
+        YellowTrackManager = new TrackManager(GameObject.Find("Yellow Drum"), GameObject.Find("Yellow Beat"), bottom, top, "yellow");
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        naturalDelete();
+        
         //hit beats
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -64,8 +69,11 @@ public class DDGameManager : MonoBehaviour
             spawn("yellow");
         }
 
-    }
 
+        //update all beats
+        update();
+
+    }
 
     void drum(string color)
     {
@@ -104,5 +112,34 @@ public class DDGameManager : MonoBehaviour
                 break;
         }
     }
+
+    void update()
+    {
+        RedTrackManager.moveBeat();
+        BlueTrackManager.moveBeat();
+        GreenTrackManager.moveBeat();
+        YellowTrackManager.moveBeat();
+    }
+
+    void naturalDelete()
+    {
+        if (RedTrackManager.isActive())
+        {
+            RedTrackManager.naturalDelete();
+        }
+        if (BlueTrackManager.isActive())
+        {
+            BlueTrackManager.naturalDelete();
+        }
+        if (GreenTrackManager.isActive())
+        {
+            GreenTrackManager.naturalDelete();
+        }
+        if (YellowTrackManager.isActive())
+        {
+            YellowTrackManager.naturalDelete();
+        }
+    }
+
 
 }

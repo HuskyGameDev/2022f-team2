@@ -2,45 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrackManager : MonoBehaviour
+public class TrackManager
 {
-    public GameObject drum;
-    public GameObject beat;
-    public float secondCounter;
+    private GameObject drum;
+    private GameObject beat;
     private float top = 150;
     private float bottom = -160;
-    private float speedFactor = 200;
+    private string color;
+    private float tempo = 200;
+    private float hitThreshold = 20;
 
-    public TrackManager(GameObject drum, GameObject beat)
+    public TrackManager(GameObject drum, GameObject beat, int bottom, int top, string color)
     {
         this.drum = drum;
         this.beat = beat;
+        this.bottom = bottom;
+        this.top = top;
+        this.color = color;
+
         beat.SetActive(false);
         drum.transform.localPosition = new Vector3(0, bottom, 0);
         beat.transform.localPosition = new Vector3(0, top, 0);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //check if beat needs to be deleted
-        deleteBeat();
-
-        //move beat
-        moveBeat();
-
-        //spawn beat if a is pressed
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            spawnBeat();
-        }
-    }
-
+ 
     public void spawnBeat()
     {
         //checks if beat is on screen
@@ -54,20 +39,20 @@ public class TrackManager : MonoBehaviour
         }
     }
 
-    void moveBeat()
+    public void moveBeat()
     {
         if(beat.activeSelf == true)
         {
-            beat.transform.Translate(0, (float)-1/speedFactor, 0);
+            beat.transform.Translate(0, (float)-1/tempo, 0);
         }
     }
 
-    void deleteBeat()
+    public void naturalDelete()
     {
-        //if beat hits end delete
-        if(beat.transform.localPosition.y == bottom)
+        if( (getY(beat) < bottom) && beat.activeSelf)
         {
             beat.SetActive(false);
+            Debug.Log(color + " naturally deleted");
         }
     }
 
@@ -76,27 +61,34 @@ public class TrackManager : MonoBehaviour
     {
         if (isHit())
         {
-            Debug.Log("Beat Hit");
+            Debug.Log(color + " beat hit    " + "   Get y for beat " + getY(beat));
         }
         else
         {
-            Debug.Log("Beat missed");
+            Debug.Log(color + " beat missed       " + "   Get y for beat " + getY(beat));
+            Debug.Log("Drum Y " + getY(drum));
         }
-    }
 
+        beat.SetActive(false);
+    }
 
 
     bool isHit()
     {
-        if( (getY(beat) > getY(drum)) && getY(beat) < getY(drum) + 20.0)
+        if( (getY(beat) > getY(drum)) && (getY(beat) < getY(drum) + hitThreshold) )
         {
             return true;
         }
         return false;
     }
 
+    public bool isActive()
+    {
+        return beat.activeSelf;
+    }
+
     float getY(GameObject gameObject)
     {
-        return gameObject.transform.position.y;
+        return gameObject.transform.localPosition.y;
     }
 }
