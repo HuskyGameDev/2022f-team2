@@ -6,11 +6,11 @@ public class TrackManager
 {
     private GameObject drum;
     private GameObject beat;
-    private float top = 150;
-    private float bottom = -160;
+    private float top = 315;
+    private float bottom = -315;
     private string color;
     private float tempo = 200;
-    private float hitThreshold = 20;
+    private float hitThreshold = 60;
 
     public TrackManager(GameObject drum, GameObject beat, int bottom, int top, string color)
     {

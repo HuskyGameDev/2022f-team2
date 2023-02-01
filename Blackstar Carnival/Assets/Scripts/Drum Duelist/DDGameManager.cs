@@ -6,35 +6,35 @@ using TMPro;
 public class DDGameManager : MonoBehaviour
 {
 
-    public GameObject RedTrack;
-    public GameObject BlueTrack;
-    public GameObject GreenTrack;
-    public GameObject YellowTrack;
     public TextMeshProUGUI scoreText;
+    public RectTransform trackRect;
 
     private TrackManager RedTrackManager;
     private TrackManager BlueTrackManager;
     private TrackManager GreenTrackManager;
     private TrackManager YellowTrackManager;
     private int score;
+    private int bottom; 
+    private int top; 
 
-    int bottom = -160;
-    int top = 150;
-    
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
+        bottom = (int)trackRect.rect.height;
+        top = (int)trackRect.rect.y;
+        Debug.Log("Top: " + top + "Bottom: " + bottom);
+
+
         RedTrackManager = new TrackManager(GameObject.Find("Red Drum"), GameObject.Find("Red Beat"), bottom, top, "red");
         BlueTrackManager = new TrackManager(GameObject.Find("Blue Drum"), GameObject.Find("Blue Beat"), bottom, top, "blue");
         GreenTrackManager = new TrackManager(GameObject.Find("Green Drum"), GameObject.Find("Green Beat"), bottom, top, "green");
         YellowTrackManager = new TrackManager(GameObject.Find("Yellow Drum"), GameObject.Find("Yellow Beat"), bottom, top, "yellow");
-        score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         naturalDelete();
         
         //hit beats
