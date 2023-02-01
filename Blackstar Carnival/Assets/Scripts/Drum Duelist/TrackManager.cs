@@ -57,19 +57,20 @@ public class TrackManager
     }
 
     //checks if beat is hit
-    public void hitBeat()
+    public bool hitBeat()
     {
+        beat.SetActive(false);
         if (isHit())
         {
             Debug.Log(color + " beat hit    " + "   Get y for beat " + getY(beat));
+            return true;
         }
         else
         {
             Debug.Log(color + " beat missed       " + "   Get y for beat " + getY(beat));
             Debug.Log("Drum Y " + getY(drum));
+            return false;
         }
-
-        beat.SetActive(false);
     }
 
 

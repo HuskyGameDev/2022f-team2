@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DDGameManager : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class DDGameManager : MonoBehaviour
     public GameObject BlueTrack;
     public GameObject GreenTrack;
     public GameObject YellowTrack;
+    public TextMeshProUGUI scoreText;
 
     private TrackManager RedTrackManager;
     private TrackManager BlueTrackManager;
     private TrackManager GreenTrackManager;
     private TrackManager YellowTrackManager;
-    
+    private int score;
+
     int bottom = -160;
     int top = 150;
     
@@ -25,6 +28,7 @@ public class DDGameManager : MonoBehaviour
         BlueTrackManager = new TrackManager(GameObject.Find("Blue Drum"), GameObject.Find("Blue Beat"), bottom, top, "blue");
         GreenTrackManager = new TrackManager(GameObject.Find("Green Drum"), GameObject.Find("Green Beat"), bottom, top, "green");
         YellowTrackManager = new TrackManager(GameObject.Find("Yellow Drum"), GameObject.Find("Yellow Beat"), bottom, top, "yellow");
+        score = 0;
     }
 
     // Update is called once per frame
@@ -75,23 +79,34 @@ public class DDGameManager : MonoBehaviour
 
     }
 
+    //drums the designated track and updates score
+    //returns true if hit, false if missed
     void drum(string color)
     {
+        bool hitDrum = false;
         switch (color)
         {
             case "red":
-                RedTrackManager.hitBeat();
+                hitDrum = RedTrackManager.hitBeat();
                 break;
             case "blue":
-                BlueTrackManager.hitBeat();
+                hitDrum = BlueTrackManager.hitBeat();
                 break;
             case "green":
-                GreenTrackManager.hitBeat();
+                hitDrum = GreenTrackManager.hitBeat();
                 break;
             case "yellow":
-                YellowTrackManager.hitBeat();
+                hitDrum = YellowTrackManager.hitBeat();
                 break;
         }
+
+        if (hitDrum)
+        {
+            score = score + 1;
+            scoreText.text = "Score: " + score;
+        }
+
+
     }
 
     void spawn(string color)
