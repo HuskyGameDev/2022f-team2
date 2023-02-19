@@ -27,6 +27,10 @@ public class DialogueManager : MonoBehaviour
         {
             nextLine();
         }
+        if (Input.GetKeyUp("space") && (playGame.inDialogue == true))
+        {
+            nextLine();
+        }
     }
 
     public void startDialogue (Dialogue dialogue)
