@@ -6,7 +6,7 @@ public class beat : MonoBehaviour
 {
 
     private RectTransform rectTransform;
-    int tempo = 100;
+    int tempo = 60;
     // Start is called before the first frame update
     void Start()
     {

@@ -58,11 +58,6 @@ public class DDGameManager : MonoBehaviour
         {
             spawn("yellow");
         }
-
-
-        //update all beats
-        update();
-
     }
 
     //drums the designated track and updates score
@@ -114,13 +109,12 @@ public class DDGameManager : MonoBehaviour
         }
     }
 
-    void update()
-    {
-
-    }
-
     void naturalDelete()
     {
+        RedTrackManager.naturalDelete();
+        BlueTrackManager.naturalDelete();
+        GreenTrackManager.naturalDelete();
+        YellowTrackManager.naturalDelete();
     }
 
 

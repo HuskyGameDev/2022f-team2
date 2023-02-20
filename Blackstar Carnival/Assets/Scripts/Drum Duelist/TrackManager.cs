@@ -7,11 +7,11 @@ public class TrackManager : MonoBehaviour
     public GameObject drum;
     public GameObject beatFab;
     public GameObject track;
+    public string color;
     private RectTransform drumRectTransform;
     private RectTransform trackRectTransform;
-    private Queue<GameObject> beatQueue;
+    private Queue<GameObject> beatQueue = new Queue<GameObject>();
 
-    private string color;
     private float hitThreshold = 60;
 
    public void Start()
@@ -23,6 +23,7 @@ public class TrackManager : MonoBehaviour
  
     public void spawnBeat()
     {
+        Debug.Log(color + " beat spawned");
         GameObject newBeat = Instantiate(beatFab, trackRectTransform) as GameObject;
         newBeat.SetActive(true);
         beatQueue.Enqueue(newBeat);
@@ -30,24 +31,35 @@ public class TrackManager : MonoBehaviour
 
     public void naturalDelete()
     {
-        if(getY(beatQueue.Peek()) < 40)
+        if (beatQueue.Count == 0)
         {
+            return;
+        }
+        if (getY(beatQueue.Peek()) < -600)
+        {
+            Debug.Log(color + " beat naturally deleted");
             Destroy(beatQueue.Dequeue());
-            Debug.Log(color + " naturally deleted");
         }
     }
 
     //checks if beat is hit
     public bool hitBeat()
     {
+        if (beatQueue.Count == 0)
+        {
+            return false;
+        }
+        
         if (isHit())
         {
             Destroy(beatQueue.Dequeue());
+            Debug.Log(color + " beat hit");
             return true;
         }
         else
         {
             Destroy(beatQueue.Dequeue());
+            Debug.Log(color + " beat missed");
             return false;
         }
     }
