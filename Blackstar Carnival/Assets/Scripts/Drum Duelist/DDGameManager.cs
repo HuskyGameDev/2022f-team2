@@ -10,18 +10,19 @@ public class DDGameManager : MonoBehaviour
     public TrackManager BlueTrackManager;
     public TrackManager GreenTrackManager;
     public TrackManager YellowTrackManager;
-
-    //public List<string> list;
+    
+    public GameObject MainCanvas;
+    public GameObject gameEndCanvas;
     public Queue<string> level = new Queue<string>();
-
-    private int score;
+    public int score;
     private bool debug;
+    //private IEnumerator play;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
-        playLevel();
+        StartCoroutine(playLevel());
     }
 
     // Update is called once per frame
@@ -105,8 +106,6 @@ public class DDGameManager : MonoBehaviour
                 scoreText.text = "Score: " + score;
             }
         }
-
-
     }
 
     void spawn(string color)
@@ -138,12 +137,25 @@ public class DDGameManager : MonoBehaviour
 
     IEnumerator playLevel()
     {
+        Debug.Log("level started");
         yield return new WaitForSeconds(3);
         while (level.Count != 0) 
         {
+            Debug.Log(level.Peek() + " beat spawned");
             spawn(level.Dequeue());
-            yield return new WaitForSeconds(1);
+            
+            yield return new WaitForSeconds(0.25f);
         }
+        //find out how to end level when all beats are gone 
+        yield return new WaitForSeconds(3);
+        Debug.Log("level ended");
+        endLevel();
+    }
+
+    void endLevel()
+    {
+        gameEndCanvas.SetActive(true);
+        MainCanvas.SetActive(false);
     }
 
 }

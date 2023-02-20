@@ -6,6 +6,7 @@ public class levelSelect : MonoBehaviour
 {
     private Queue<string> level;
     public DDGameManager gameManager;
+    public GameObject mainCanvas;
     public GameObject LevelSelectUI;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class levelSelect : MonoBehaviour
             }
         }
         gameManager.level = level;
+        mainCanvas.SetActive(true);
         LevelSelectUI.SetActive(false);
     }
 
