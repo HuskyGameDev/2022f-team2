@@ -5,31 +5,17 @@ using TMPro;
 
 public class DDGameManager : MonoBehaviour
 {
-
     public TextMeshProUGUI scoreText;
-    public RectTransform trackRect;
-
-    private TrackManager RedTrackManager;
-    private TrackManager BlueTrackManager;
-    private TrackManager GreenTrackManager;
-    private TrackManager YellowTrackManager;
+    public TrackManager RedTrackManager;
+    public TrackManager BlueTrackManager;
+    public TrackManager GreenTrackManager;
+    public TrackManager YellowTrackManager;
     private int score;
-    private int bottom; 
-    private int top; 
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
-        bottom = (int)trackRect.rect.height;
-        top = (int)trackRect.rect.y;
-        Debug.Log("Top: " + top + "Bottom: " + bottom);
-
-
-        RedTrackManager = new TrackManager(GameObject.Find("Red Drum"), GameObject.Find("Red Beat"), bottom, top, "red");
-        BlueTrackManager = new TrackManager(GameObject.Find("Blue Drum"), GameObject.Find("Blue Beat"), bottom, top, "blue");
-        GreenTrackManager = new TrackManager(GameObject.Find("Green Drum"), GameObject.Find("Green Beat"), bottom, top, "green");
-        YellowTrackManager = new TrackManager(GameObject.Find("Yellow Drum"), GameObject.Find("Yellow Beat"), bottom, top, "yellow");
     }
 
     // Update is called once per frame
@@ -130,30 +116,11 @@ public class DDGameManager : MonoBehaviour
 
     void update()
     {
-        RedTrackManager.moveBeat();
-        BlueTrackManager.moveBeat();
-        GreenTrackManager.moveBeat();
-        YellowTrackManager.moveBeat();
+
     }
 
     void naturalDelete()
     {
-        if (RedTrackManager.isActive())
-        {
-            RedTrackManager.naturalDelete();
-        }
-        if (BlueTrackManager.isActive())
-        {
-            BlueTrackManager.naturalDelete();
-        }
-        if (GreenTrackManager.isActive())
-        {
-            GreenTrackManager.naturalDelete();
-        }
-        if (YellowTrackManager.isActive())
-        {
-            YellowTrackManager.naturalDelete();
-        }
     }
 
 
