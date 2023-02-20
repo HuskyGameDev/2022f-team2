@@ -6,7 +6,7 @@ public class beat : MonoBehaviour
 {
 
     private RectTransform rectTransform;
-    int tempo = 60;
+    int tempo = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,6 @@ public class beat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rectTransform.Translate(0, (float)-1 / tempo, 0);
+        rectTransform.Translate(0, tempo * ((float)-1 / 10000), 0);
     }
 }

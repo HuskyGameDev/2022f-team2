@@ -12,8 +12,7 @@ public class TrackManager : MonoBehaviour
     private RectTransform trackRectTransform;
     private Queue<GameObject> beatQueue = new Queue<GameObject>();
 
-    private float hitThreshold = 60;
-
+    private int hitThreshold = 80;
    public void Start()
     {
         drumRectTransform = drum.GetComponent<RectTransform>();
@@ -35,9 +34,9 @@ public class TrackManager : MonoBehaviour
         {
             return;
         }
-        if (getY(beatQueue.Peek()) < -600)
+        if (getY(beatQueue.Peek()) < trackRectTransform.rect.height * -1)
         {
-            Debug.Log(color + " beat naturally deleted");
+            Debug.Log(color + " beat naturally deleted at y =" + getY(beatQueue.Peek()));
             Destroy(beatQueue.Dequeue());
         }
     }
@@ -66,7 +65,7 @@ public class TrackManager : MonoBehaviour
 
     bool isHit()
     {
-        if( (getY(beatQueue.Peek()) > getY(drum)) && (getY(beatQueue.Peek()) < getY(drum) + hitThreshold) )
+        if( (getY(beatQueue.Peek()) > -1 * trackRectTransform.rect.height) && (getY(beatQueue.Peek()) < -1 * trackRectTransform.rect.height + hitThreshold))
         {
             return true;
         }
