@@ -19,4 +19,5 @@ public class beat : MonoBehaviour
     {
         rectTransform.Translate(0, tempo * ((float)-1 / 10000), 0);
     }
+
 }

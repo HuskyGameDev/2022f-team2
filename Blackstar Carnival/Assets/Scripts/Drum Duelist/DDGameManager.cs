@@ -10,17 +10,24 @@ public class DDGameManager : MonoBehaviour
     public TrackManager BlueTrackManager;
     public TrackManager GreenTrackManager;
     public TrackManager YellowTrackManager;
+
+    //public List<string> list;
+    public Queue<string> level = new Queue<string>();
+
     private int score;
+    private bool debug;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+        playLevel();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //auto delete if end is reached
         naturalDelete();
         
         //hit beats
@@ -42,21 +49,25 @@ public class DDGameManager : MonoBehaviour
         }
 
         //spawn beats for testing
-        if (Input.GetKeyDown(KeyCode.H))
+        //debug mode only
+        if (debug)
         {
-            spawn("red");
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            spawn("blue");
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            spawn("green");
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            spawn("yellow");
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                spawn("red");
+            }
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                spawn("blue");
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                spawn("green");
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                spawn("yellow");
+            }
         }
     }
 
@@ -83,8 +94,16 @@ public class DDGameManager : MonoBehaviour
 
         if (hitDrum)
         {
-            score = score + 1;
+            score = score + 100;
             scoreText.text = "Score: " + score;
+        }
+        else
+        {
+            if (score > 0)
+            {
+                score = score - 50;
+                scoreText.text = "Score: " + score;
+            }
         }
 
 
@@ -117,5 +136,14 @@ public class DDGameManager : MonoBehaviour
         YellowTrackManager.naturalDelete();
     }
 
+    IEnumerator playLevel()
+    {
+        yield return new WaitForSeconds(3);
+        while (level.Count != 0) 
+        {
+            spawn(level.Dequeue());
+            yield return new WaitForSeconds(1);
+        }
+    }
 
 }
