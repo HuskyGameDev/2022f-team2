@@ -9,6 +9,7 @@ TagManager:
   - CC_Tent
   - RR_Tent
   - NPC
+  - Manager
   layers:
   - Default
   - TransparentFX
