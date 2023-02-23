@@ -772,7 +772,6 @@ MonoBehaviour:
   hit: 32
   ball: {fileID: 608433908}
   bell: {fileID: 1369770518}
-  bounds: {fileID: 0}
 --- !u!54 &608433915
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1945,8 +1944,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352286731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.23, z: 11}
-  m_LocalScale: {x: 1, y: 1.33, z: 1}
+  m_LocalPosition: {x: -0.001, y: 0.07, z: 11}
+  m_LocalScale: {x: 9.644584, y: 12.827297, z: 9.644584}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1493541051}
@@ -1993,7 +1992,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f0e5bda18a0f46245936930b531be9ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ccb3cbcf77ef82a46a828940d41dcf6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
