@@ -22,27 +22,29 @@ public class ballController : MonoBehaviour{
     void Update()
     {
         if(Input.GetKey(hit) && (hitCheck == 0)){
-                 HammerHitterUIManager.Instance.PauseBar();
+                HammerHitterUIManager.Instance.PauseBar();
                 hitBall();
+
             }
     }
 
     void resetBall(){
             rb.useGravity = false;
-            ball.transform.position = new Vector3(0f, -3.5f, 10f);
+            ball.transform.position = new Vector3(0f, -1.829f, 10.966f);
         }
 
     void hitBall(){
             hitCheck = 1;
             var vel = rb.velocity;
-            vel.y = Strengthmask.fillAmount * 10f;
+            vel.y = Strengthmask.fillAmount * 15f;
             rb.velocity = vel;
             rb.useGravity = true;
         }
 
     void OnCollisionEnter(Collision col){
         if(col.gameObject == bell){
-            GetComponent<AudioSource>().Play();
+            //GetComponent<AudioSource>().Play();
+            rb.useGravity = false;
             rb.velocity = new Vector3(0f, 0f, 0f);
             HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Win);
         }
