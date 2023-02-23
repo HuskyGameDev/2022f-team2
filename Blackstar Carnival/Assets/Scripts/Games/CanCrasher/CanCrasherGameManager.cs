@@ -11,13 +11,6 @@ public enum CanCrasherGameState
 public class CanCrasherGameManager : MonoBehaviour
 {
     public static CanCrasherGameManager Instance;
-
-    private StarBucksManager manager;
-
-    void Start()
-    {
-        manager = GameObject.Find("StarBucksManager").GetComponent<StarBucksManager>();
-    }
     
     //private CanCrasherGameState _gameState = CanCrasherGameState.None;
     private CanCrasherGameState _gameState = CanCrasherGameState.Playing;
@@ -49,10 +42,7 @@ public class CanCrasherGameManager : MonoBehaviour
                 break;
             case CanCrasherGameState.Win:
                 CanCrasherUIManager.Instance.ShowWinPanel();
-
-                manager.UpdateBucks(1);
-                Debug.Log("Added star buck");
-
+                StarBucksManager.Instance.UpdateBucks(1);
                 break;
             case CanCrasherGameState.Menu:
                 CanCrasherUIManager.Instance.ShowMenuPanel();

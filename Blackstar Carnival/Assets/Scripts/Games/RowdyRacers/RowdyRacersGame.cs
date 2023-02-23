@@ -22,8 +22,6 @@ public class RowdyRacersGame : MonoBehaviour
         resultPanel.SetActive(false);
         result = GameObject.Find("Result Panel/Result");
         resultText = result.GetComponent<TextMeshProUGUI>();
-
-        //manager = GameObject.Find("GameManager").GetComponent<StarBucksManager>();
     }
 
     public void bet(int racer)
@@ -46,9 +44,7 @@ public class RowdyRacersGame : MonoBehaviour
             resultText.text = $"You Win!\n";
             Debug.Log($"{racerPositions[0]} {racerPositions[1]} {racerPositions[2]} {racerPositions[3]}");
             
-            //manager.UpdateBucks(1);
             StarBucksManager.Instance.UpdateBucks(1);
-            Debug.Log("Added star buck");
         }
         else if (racer == racerPositions[1])
         {
