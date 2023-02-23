@@ -8,13 +8,13 @@ public class ballController : MonoBehaviour{
     public Image Strengthmask;
     public KeyCode hit = KeyCode.Space;
     private Transform tran;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     public GameObject ball;
     public GameObject bell;
     // Start is called before the first frame update
     void Start()
     {
-        rb = ball.GetComponent<Rigidbody2D>();
+        rb = ball.GetComponent<Rigidbody>();
         resetBall();
     }
 
@@ -22,13 +22,14 @@ public class ballController : MonoBehaviour{
     void Update()
     {
         if(Input.GetKey(hit) && (hitCheck == 0)){
+                 HammerHitterUIManager.Instance.PauseBar();
                 hitBall();
             }
     }
 
     void resetBall(){
-            rb.gravityScale = 0;
-            ball.transform.position = new Vector3(0f, -3f, 10f);
+            rb.useGravity = false;
+            ball.transform.position = new Vector3(0f, -3.5f, 10f);
         }
 
     void hitBall(){
@@ -36,15 +37,19 @@ public class ballController : MonoBehaviour{
             var vel = rb.velocity;
             vel.y = Strengthmask.fillAmount * 10f;
             rb.velocity = vel;
-            rb.gravityScale = .5f;
+            rb.useGravity = true;
         }
 
-    void OnCollisionEnter2D(Collision2D col){
-        Debug.Log("FFF");
+    void OnCollisionEnter(Collision col){
         if(col.gameObject == bell){
-            Debug.Log("FFF");
             GetComponent<AudioSource>().Play();
             rb.velocity = new Vector3(0f, 0f, 0f);
+            HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Win);
+        }
+        else{
+            rb.useGravity = false;
+            rb.velocity = new Vector3(0f, 0f, 0f);
+            HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Lose);
         }
     }
 
