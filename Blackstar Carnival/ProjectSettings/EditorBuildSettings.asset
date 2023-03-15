@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Hammer Hitter.unity
+    guid: 1d3971eb2e9b93d4bb226fbc640e8438
+  - enabled: 1
+    path: Assets/Scenes/Drum Duelist.unity
+    guid: 0c3cdb06959929a4991ea97080766056
   m_configObjects: {}

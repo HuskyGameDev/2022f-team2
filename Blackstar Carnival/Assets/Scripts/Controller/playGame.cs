@@ -29,13 +29,23 @@ public class playGame : MonoBehaviour
         {
             inDialogue = false;
             isColliding = false;
-            if(this.gameObject.tag.Equals("CC_Tent"))
+
+            switch(this.gameObject.tag)
             {
-                SceneManager.LoadScene("Can Crashers");
-            }
-            if(this.gameObject.tag.Equals("RR_Tent"))
-            {
-                SceneManager.LoadScene("Rowdy Racers");
+                case "CC_Tent":
+                    SceneManager.LoadScene("Can Crashers");
+                    break;
+                case "RR_Tent":
+                    SceneManager.LoadScene("Rowdy Racers");
+                    break;
+                case "HH_Tent":
+                    SceneManager.LoadScene("Hammer Hitter");
+                    break;
+                case "DD_Tent":
+                    SceneManager.LoadScene("Drum Duelist");
+                    break;
+                default:
+                    break;
             }
         }
         else if (Input.GetKeyUp("space") && inDialogue && isColliding)
