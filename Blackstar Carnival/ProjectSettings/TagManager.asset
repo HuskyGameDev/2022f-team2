@@ -12,6 +12,7 @@ TagManager:
   - Manager
   - HH_Tent
   - DD_Tent
+  - Menu
   layers:
   - Default
   - TransparentFX
