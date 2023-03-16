@@ -13,6 +13,7 @@ public class DDGameManager : MonoBehaviour
     
     public GameObject MainCanvas;
     public GameObject gameEndCanvas;
+    public GameObject levelSelect;
     public Queue<string> level = new Queue<string>();
     public int score;
     private bool debug;
@@ -137,6 +138,7 @@ public class DDGameManager : MonoBehaviour
 
     IEnumerator playLevel()
     {
+        levelSelect.SetActive(false);
         Debug.Log("level started");
         yield return new WaitForSeconds(3);
         while (level.Count != 0) 
@@ -155,6 +157,7 @@ public class DDGameManager : MonoBehaviour
     void endLevel()
     {
         gameEndCanvas.SetActive(true);
+        levelSelect.SetActive(false);
         MainCanvas.SetActive(false);
     }
 
