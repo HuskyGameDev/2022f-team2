@@ -7,11 +7,23 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
     public static bool inDialogue;
     private bool isColliding;
+    public GameObject exclamation;
+    public GameObject prompt;
+
+    void Start()
+    {
+        exclamation = GameObject.Find("notification");
+        prompt = GameObject.Find("prompt");
+        exclamation.SetActive(true);
+        prompt.SetActive(false);
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && (inDialogue == false) && isColliding)
         {
+            exclamation.SetActive(false);
+            prompt.SetActive(false);
             Debug.Log("Dialog started");
             inDialogue = true;
             TriggerDialogue();
@@ -27,6 +39,8 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            exclamation.SetActive(false);
+            prompt.SetActive(true);
             Debug.Log("Colliding with Player");
             isColliding = true;
         }
