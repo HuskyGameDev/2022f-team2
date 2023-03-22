@@ -28,17 +28,19 @@ public class TrackManager : MonoBehaviour
         beatQueue.Enqueue(newBeat);
     }
 
-    public void naturalDelete()
+    public bool naturalDelete()
     {
         if (beatQueue.Count == 0)
         {
-            return;
+            return false;
         }
         if (getY(beatQueue.Peek()) < trackRectTransform.rect.height * -1)
         {
             Debug.Log(color + " beat naturally deleted at y =" + getY(beatQueue.Peek()));
             Destroy(beatQueue.Dequeue());
+            return true;
         }
+        return false;
     }
 
     //checks if beat is hit

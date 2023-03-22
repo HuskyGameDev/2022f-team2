@@ -17,7 +17,8 @@ public class DDGameManager : MonoBehaviour
     public Queue<string> level = new Queue<string>();
     public int score;
     private bool debug;
-    //private IEnumerator play;
+
+    public int hitBeats = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -107,6 +108,7 @@ public class DDGameManager : MonoBehaviour
                 scoreText.text = "Score: " + score;
             }
         }
+        hitBeats++;
     }
 
     void spawn(string color)
@@ -130,10 +132,11 @@ public class DDGameManager : MonoBehaviour
 
     void naturalDelete()
     {
-        RedTrackManager.naturalDelete();
-        BlueTrackManager.naturalDelete();
-        GreenTrackManager.naturalDelete();
-        YellowTrackManager.naturalDelete();
+        if (RedTrackManager.naturalDelete() || BlueTrackManager.naturalDelete() ||
+            GreenTrackManager.naturalDelete() || YellowTrackManager.naturalDelete())
+        {
+            hitBeats++;
+        }
     }
 
     IEnumerator playLevel()
@@ -141,17 +144,24 @@ public class DDGameManager : MonoBehaviour
         levelSelect.SetActive(false);
         Debug.Log("level started");
         yield return new WaitForSeconds(3);
+        int totalBeats = level.Count;
+
         while (level.Count != 0) 
         {
             Debug.Log(level.Peek() + " beat spawned");
             spawn(level.Dequeue());
-            
             yield return new WaitForSeconds(0.25f);
         }
+
+        while (hitBeats < totalBeats) { 
+            yield return new WaitForSeconds(0.25f);
+        }
+        Debug.Log("hitBeats " + System.Convert.ToString(hitBeats));
+        yield return new WaitForSeconds(3.0f);
+            endLevel();
+        
+
         //find out how to end level when all beats are gone 
-        yield return new WaitForSeconds(3);
-        Debug.Log("level ended");
-        endLevel();
     }
 
     void endLevel()
