@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,15 @@ public class playGame : MonoBehaviour
     public Dialogue dialogue;
     public static bool inDialogue;
     private bool isColliding;
+    public GameObject prompt;
 
     void Start()
     {
         inDialogue = false;
         isColliding = false;
+
+        //prompt = GameObject.Find("prompt");
+        prompt.SetActive(false);
     }
 
     void Update()
@@ -20,6 +25,7 @@ public class playGame : MonoBehaviour
         // starts the dialogue
         if (Input.GetKeyDown(KeyCode.E) && !inDialogue && isColliding)
         {
+            prompt.SetActive(false);
             Debug.Log("Dialog started");
             inDialogue = true;
             TriggerDialogue();
@@ -27,6 +33,7 @@ public class playGame : MonoBehaviour
         // the player chooses to play the game
         else if (Input.GetKeyDown(KeyCode.E) && inDialogue && isColliding)
         {
+            prompt.SetActive(false);
             inDialogue = false;
             isColliding = false;
 
@@ -50,6 +57,7 @@ public class playGame : MonoBehaviour
         }
         else if (Input.GetKeyUp("space") && inDialogue && isColliding)
         {
+            prompt.SetActive(false);
             Debug.Log("space pressed");
             inDialogue = false;
             FindObjectOfType<DialogueManager>().endDialogue();
@@ -65,6 +73,7 @@ public class playGame : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            prompt.SetActive(true);
             Debug.Log("Colliding with Player");
             isColliding = true;
         }
@@ -72,6 +81,8 @@ public class playGame : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
+        prompt.SetActive(false);
         isColliding = false;
     }
 }
+

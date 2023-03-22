@@ -13,6 +13,7 @@ TagManager:
   - HH_Tent
   - DD_Tent
   - Menu
+  - prompt
   layers:
   - Default
   - TransparentFX
