@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class beat : MonoBehaviour
 {
-
+    public GameObject track;
+    private RectTransform trackTransform;
     private RectTransform rectTransform;
-    int tempo = 100;
+    float tempo; 
     // Start is called before the first frame update
     void Start()
     {
+        trackTransform = track.GetComponent<RectTransform>();
         rectTransform = this.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector3(0, 250, 0);
+        tempo = trackTransform.rect.height / 72000;
+        rectTransform.anchoredPosition = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rectTransform.Translate(0, tempo * ((float)-1 / 10000), 0);
+        rectTransform.Translate(0, tempo * -1, 0, trackTransform);
     }
 
 }
