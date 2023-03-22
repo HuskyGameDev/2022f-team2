@@ -160,7 +160,6 @@ public class DDGameManager : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
             endLevel();
         
-
         //find out how to end level when all beats are gone 
     }
 
