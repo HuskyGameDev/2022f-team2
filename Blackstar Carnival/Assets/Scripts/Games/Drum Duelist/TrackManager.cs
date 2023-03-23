@@ -11,13 +11,13 @@ public class TrackManager : MonoBehaviour
     private RectTransform drumRectTransform;
     private RectTransform trackRectTransform;
     private Queue<GameObject> beatQueue = new Queue<GameObject>();
+    private float hitThreshold;
 
-    private int hitThreshold = 80;
-   public void Start()
+    public void Start()
     {
         drumRectTransform = drum.GetComponent<RectTransform>();
-        drumRectTransform.anchoredPosition = new Vector3(0, 40, 0);
         trackRectTransform = track.GetComponent<RectTransform>();
+        hitThreshold = drumRectTransform.rect.height;
     }
  
     public void spawnBeat()
@@ -34,7 +34,7 @@ public class TrackManager : MonoBehaviour
         {
             return false;
         }
-        if (getY(beatQueue.Peek()) < trackRectTransform.rect.height * -1)
+        if (getY(beatQueue.Peek()) < (trackRectTransform.rect.height * -1) - hitThreshold/2)
         {
             Debug.Log(color + " beat naturally deleted at y =" + getY(beatQueue.Peek()));
             Destroy(beatQueue.Dequeue());
