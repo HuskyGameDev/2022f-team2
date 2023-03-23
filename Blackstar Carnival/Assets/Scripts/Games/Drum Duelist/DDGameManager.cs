@@ -24,7 +24,7 @@ public class DDGameManager : MonoBehaviour
     public int hitBeats;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         score = 0;
         hitBeats = 0;
