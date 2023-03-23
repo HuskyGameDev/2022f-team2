@@ -5,6 +5,7 @@ using UnityEngine;
 public class beat : MonoBehaviour
 {
     public GameObject track;
+    public GameObject mainCanvas;
     private RectTransform trackTransform;
     private RectTransform rectTransform;
     float tempo; 
@@ -13,14 +14,14 @@ public class beat : MonoBehaviour
     {
         trackTransform = track.GetComponent<RectTransform>();
         rectTransform = this.GetComponent<RectTransform>();
-        tempo = trackTransform.rect.height / 72000;
+        tempo = trackTransform.rect.height / 15000;
         rectTransform.anchoredPosition = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rectTransform.Translate(0, tempo * -1, 0, trackTransform);
+        rectTransform.Translate(0, tempo * -1, 0, mainCanvas.transform);
     }
 
 }
