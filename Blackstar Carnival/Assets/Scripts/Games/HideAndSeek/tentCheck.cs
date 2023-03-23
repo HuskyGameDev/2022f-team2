@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class tentCheck : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject tent;
+    private bool isColliding;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.E) && isColliding)
+        {
+                HideAndSeekGameManager.Instance.checkResults(tent);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag.Equals("Player"))
+        {
+            isColliding = true;
+        }
     }
 }

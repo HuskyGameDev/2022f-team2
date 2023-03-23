@@ -12,13 +12,13 @@ public enum HideAndSeekGameState
 
 public class HideAndSeekGameManager : MonoBehaviour
 {
-
     int winningTent;
     public static HideAndSeekGameManager Instance;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        setTent();
     }
 
     private HideAndSeekGameState _gameState = HideAndSeekGameState.Playing;
@@ -44,9 +44,59 @@ public class HideAndSeekGameManager : MonoBehaviour
         winningTent = Random.Range(1, 4);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void checkResults(GameObject g){
+        switch(winningTent){
+                
+                case 1:
+                    if(g.transform.parent.gameObject.name == "RedTent1"){
+                        SetGameState(HideAndSeekGameState.Win);
+                    }
+                    break;
+                case 2:
+                    if(g.transform.parent.gameObject.name == "RedTent1"){
+                        SetGameState(HideAndSeekGameState.Win);
+                    }
+                    break;
+                case 3:
+                    if(g.transform.parent.gameObject.name == "RedTent1"){
+                        SetGameState(HideAndSeekGameState.Win);
+                    }
+                    break;
+                case 4:
+                    if(g.transform.parent.gameObject.name == "RedTent1"){
+                        SetGameState(HideAndSeekGameState.Win);
+                    }
+                    break;
+                default:
+                    SetGameState(HideAndSeekGameState.Lose);
+                    break;
+            
+        }
     }
+
+    public void SetGameState(HideAndSeekGameState state)
+    {
+        _gameState = state;
+        switch (state)
+        {
+            case HideAndSeekGameState.Lose:
+                HideAndSeekUIManager.Instance.ShowLosePanel();
+                break;
+
+            case HideAndSeekGameState.Win:
+                HideAndSeekUIManager.Instance.ShowWinPanel();
+
+                StarBucksManager.Instance.UpdateBucks(1);
+
+                break;
+            case HideAndSeekGameState.Menu:
+            //    HideAndSeekUIManager.Instance.ShowMenuPanel();
+            //    break;
+
+            case HideAndSeekGameState.Playing:
+                HideAndSeekUIManager.Instance.ShowPlayingPanel();
+                break;
+        }
+    }
+
 }
