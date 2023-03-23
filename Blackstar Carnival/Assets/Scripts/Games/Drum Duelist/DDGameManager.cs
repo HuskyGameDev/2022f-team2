@@ -6,6 +6,7 @@ using TMPro;
 public class DDGameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI beatsHitText;
     public TrackManager RedTrackManager;
     public TrackManager BlueTrackManager;
     public TrackManager GreenTrackManager;
@@ -14,16 +15,22 @@ public class DDGameManager : MonoBehaviour
     public GameObject MainCanvas;
     public GameObject gameEndCanvas;
     public GameObject levelSelect;
-    public Queue<string> level = new Queue<string>();
+    public Queue<string> level;
     public int score;
     private bool debug;
 
-    public int hitBeats = 0;
+    private int actualBeatsHit;
+
+    public int hitBeats;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
+        hitBeats = 0;
+        actualBeatsHit = 0;
+        scoreText.text = "Score: 0";
+        beatsHitText.text = "Beats Hit: 0";
         StartCoroutine(playLevel());
     }
 
@@ -98,7 +105,10 @@ public class DDGameManager : MonoBehaviour
         if (hitDrum)
         {
             score = score + 100;
+            actualBeatsHit++;
             scoreText.text = "Score: " + score;
+            beatsHitText.text = "Beats Hit: " + actualBeatsHit;
+
         }
         else
         {
@@ -141,11 +151,11 @@ public class DDGameManager : MonoBehaviour
 
     IEnumerator playLevel()
     {
-        levelSelect.SetActive(false);
-        Debug.Log("level started");
-        yield return new WaitForSeconds(3);
-        int totalBeats = level.Count;
 
+        int totalBeats = level.Count;
+        Debug.Log("level started. total beats: " + System.Convert.ToString(totalBeats));
+        yield return new WaitForSeconds(3);
+        
         while (level.Count != 0) 
         {
             Debug.Log(level.Peek() + " beat spawned");
