@@ -14,6 +14,7 @@ TagManager:
   - DD_Tent
   - Menu
   - prompt
+  - RC_Car
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - UI
   - Beat
   - Drum
-  - 
+  - RcCar
   - 
   - 
   - 
@@ -56,4 +57,7 @@ TagManager:
     locked: 0
   - name: Beat
     uniqueID: 3294429473
+    locked: 0
+  - name: Foreground
+    uniqueID: 656729527
     locked: 0
