@@ -11,19 +11,20 @@ public class DDGameManager : MonoBehaviour
     public TrackManager BlueTrackManager;
     public TrackManager GreenTrackManager;
     public TrackManager YellowTrackManager;
-    
+
     public GameObject MainCanvas;
     public GameObject gameEndCanvas;
     public GameObject levelSelect;
-    public Queue<string> level;
-    public int score;
-    private bool debug;
 
+    public int score;
+    public int hitBeats;
     private int actualBeatsHit;
 
-    public int hitBeats;
+    public Dictionary<string, object> levelInfo;  
+    public float tempoFactor;
 
-    // Start is called before the first frame update
+    private bool debug;
+    
     void OnEnable()
     {
         score = 0;
@@ -31,6 +32,10 @@ public class DDGameManager : MonoBehaviour
         actualBeatsHit = 0;
         scoreText.text = "Score: 0";
         beatsHitText.text = "Beats Hit: 0";
+
+        levelInfo = levelSelect.GetComponent<levelSelect>().levelInfo;
+
+        tempoFactor = (float)levelInfo["tempoFactor"];
         StartCoroutine(playLevel());
     }
 
@@ -39,7 +44,7 @@ public class DDGameManager : MonoBehaviour
     {
         //auto delete if end is reached
         naturalDelete();
-        
+
         //hit beats
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -151,27 +156,39 @@ public class DDGameManager : MonoBehaviour
 
     IEnumerator playLevel()
     {
-
+        Queue<string> level = (Queue<string>)levelInfo["level"];
         int totalBeats = level.Count;
         Debug.Log("level started. total beats: " + System.Convert.ToString(totalBeats));
         yield return new WaitForSeconds(3);
-        
-        while (level.Count != 0) 
+
+        //normal mode
+        if (!(bool)levelInfo["chordMode"])
         {
-            Debug.Log(level.Peek() + " beat spawned");
-            spawn(level.Dequeue());
-            yield return new WaitForSeconds(0.25f);
+            while (level.Count != 0)
+            {
+                Debug.Log(level.Peek() + " beat spawned");
+                spawn(level.Dequeue());
+                yield return new WaitForSeconds(0.4f / (float)(levelInfo["tempoFactor"]));
+            }
+        }
+        else
+        {
+            while (level.Count != 0)
+            {
+                spawn(level.Dequeue());
+                spawn(level.Dequeue());
+                yield return new WaitForSeconds(0.5f * (float)(levelInfo["tempoFactor"]));
+            }
         }
 
-        while (hitBeats < totalBeats) { 
-            yield return new WaitForSeconds(0.25f);
-        }
-        Debug.Log("hitBeats " + System.Convert.ToString(hitBeats));
-        yield return new WaitForSeconds(3.0f);
+            Debug.Log("Level Over!");
+            Debug.Log("hitBeats " + System.Convert.ToString(hitBeats));
+            yield return new WaitForSeconds(3.0f);
             endLevel();
-        
-        //find out how to end level when all beats are gone 
-    }
+
+            //find out how to end level when all beats are gone 
+        }
+    
 
     void endLevel()
     {
