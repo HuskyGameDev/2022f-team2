@@ -49,6 +49,8 @@ public class DialogueTrigger : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other)
     {
         isColliding = false;
+        exclamation.SetActive(false);
+        prompt.SetActive(false);
     }
 
 }

@@ -14,6 +14,8 @@ public class CanCrasherSwipeController :  MonoBehaviour
     [HideInInspector] public GameObject Ball;
 
     private bool canThrow = false;
+
+    public GameObject pauseMenu;
     
     private void Awake()
     {
@@ -29,7 +31,7 @@ public class CanCrasherSwipeController :  MonoBehaviour
     private void Update()
     {
         if ( CanCrasherGameManager.Instance.GameState != CanCrasherGameState.Playing || Ball == null ) return;
-        
+
         // Start swipe
         if (Input.GetMouseButtonDown(0))
         {

@@ -10,39 +10,57 @@ public class PlayerMovement : MonoBehaviour
     
     private Vector2 moveDirection;
 
+    public GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ProcessInputs();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ProcessInputs();
+        // only move if the pause menu is not up lol
+        if(!(pauseMenu.activeInHierarchy))
+        {
+            ProcessInputs();
 
-        animator.SetFloat("Horizontal", moveDirection.x);
-        animator.SetFloat("Vertical", moveDirection.y);
-        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+            animator.SetFloat("Horizontal", moveDirection.x);
+            animator.SetFloat("Vertical", moveDirection.y);
+            animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+        }
+        
     }
 
     void FixedUpdate()
     {
-        // Physics Calculations
-        Move();
+        // only move if the pause menu is not up lol
+        if(!(pauseMenu.activeInHierarchy))
+        {
+            // Physics Calculations
+            Move();
+        }
     }
 
     void ProcessInputs()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        // only move if the pause menu is not up lol
+        if(!(pauseMenu.activeInHierarchy))
+        {
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized;
+            moveDirection = new Vector2(moveX, moveY).normalized;
+        }
     }
 
     void Move()
     {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        // only move if the pause menu is not up lol
+        if(!(pauseMenu.activeInHierarchy))
+        {
+            rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        }
     }
 }

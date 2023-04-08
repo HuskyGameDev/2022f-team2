@@ -12,6 +12,8 @@ public class HammerHitterUIManager : MonoBehaviour
     public GameObject WinPanel;
     private int playCheck = 0;
 
+    public GameObject pause;
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,13 +32,10 @@ public class HammerHitterUIManager : MonoBehaviour
         resetStrengthBar();
     }
 
-    
-
     // Update is called once per frame
     void Update()
     {
-        
-        GetCurrentFill();
+        if(pause.activeInHierarchy == false) { GetCurrentFill(); }
     }
 
     void resetStrengthBar(){
@@ -70,6 +69,12 @@ public class HammerHitterUIManager : MonoBehaviour
 
     public void ShowPlayingPanel(){
         StrengthBar.SetActive(true);
+        LosePanel.SetActive(false);
+        WinPanel.SetActive(false);
+    }
+
+    public void ShowMenuPanel(){
+        StrengthBar.SetActive(false);
         LosePanel.SetActive(false);
         WinPanel.SetActive(false);
     }

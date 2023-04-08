@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Drum Duelist.unity
     guid: 0c3cdb06959929a4991ea97080766056
+  - enabled: 1
+    path: Assets/Scenes/Prize Tent.unity
+    guid: 88a5926a76da81646804c307e16f11d3
   m_configObjects: {}

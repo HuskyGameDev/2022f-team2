@@ -66,9 +66,9 @@ public class HammerHitterGameManager : MonoBehaviour
                 //Debug.Log("Added star buck");
 
                 break;
-            //case HammerHitterGameState.Menu:
-            //    HammerHitterUIManager.Instance.ShowMenuPanel();
-            //    break;
+            case HammerHitterGameState.Menu:
+                HammerHitterUIManager.Instance.ShowMenuPanel();
+                break;
 
             case HammerHitterGameState.Playing:
                 HammerHitterUIManager.Instance.ShowPlayingPanel();

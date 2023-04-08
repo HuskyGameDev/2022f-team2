@@ -10,8 +10,10 @@ public class PauseMenu : MonoBehaviour
     public Button controls;
     public Button quit;
     public Button resume;
+    public Button back;
     public GameObject pauseMenu;
     public GameObject controlMenu;
+    public string scene;
 
     // Start is called before the first frame update
     void Start()
@@ -20,36 +22,58 @@ public class PauseMenu : MonoBehaviour
         controls.onClick.AddListener(controlsFunc);
         quit.onClick.AddListener(quitFunc);
         resume.onClick.AddListener(resumeFunc);
+        back.onClick.AddListener(backFunc);
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && controlMenu.activeInHierarchy == true)
+        scene = SceneManager.GetActiveScene().name;
+        // pauses game if not paused
+        if(Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeInHierarchy == false)
+        {
+            pauseFunc();
+        }
+        // gets rid of control menu if its up
+        else if(Input.GetKeyDown(KeyCode.Escape) && controlMenu.activeInHierarchy == true)
         {
             controlMenu.SetActive(false);
         }
+        // unpauses if paused
         else if(Input.GetKeyDown(KeyCode.Escape) && pauseMenu.activeInHierarchy == true)
         {
-            pauseMenu.SetActive(false);
+            resumeFunc();
         }
     }
     public void pauseFunc()
     {
+        Time.timeScale = 0;
+        if(scene == "Can Crashers") { CanCrasherGameManager.Instance.SetGameState(CanCrasherGameState.Menu); }
+        if(scene == "Hammer Hitter") { HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Menu); }
+        
         // displays the pause panel
         pauseMenu.SetActive(true);
         controlMenu.SetActive(false);
     }
     public void controlsFunc()
     {
-        // pull up controls?
         controlMenu.SetActive(true);
     }
     public void quitFunc()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
     }
     public void resumeFunc()
     {
+        Time.timeScale = 1;
+        if(scene == "Can Crashers") { CanCrasherGameManager.Instance.SetGameState(CanCrasherGameState.Playing); }
+        if(scene == "Hammer Hitter") { HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Playing); }
         // hide the menu
         pauseMenu.SetActive(false);
+    }
+    public void backFunc() // takes you back to the carnival
+    {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        SceneManager.LoadScene("Carnival");
     }
 }
