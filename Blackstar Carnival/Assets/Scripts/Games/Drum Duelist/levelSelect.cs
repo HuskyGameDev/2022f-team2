@@ -5,7 +5,7 @@ using UnityEngine;
 public class levelSelect : MonoBehaviour
 {
     public Dictionary<string, object> levelInfo;
-    public DDGameManager gameManager;
+    public DrumDuelistGameManager gameManager;
     public GameObject mainCanvas;
     public GameObject LevelSelectUI;
     private Queue<string> level = new Queue<string>();

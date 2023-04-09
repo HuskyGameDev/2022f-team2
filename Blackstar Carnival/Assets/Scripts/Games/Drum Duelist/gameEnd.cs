@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class gameEnd : MonoBehaviour
 {
     public TextMeshProUGUI finalScoreText;
-    public DDGameManager gameManager;
+    public DrumDuelistGameManager gameManager;
     public GameObject levelSelectCanvas;
     public GameObject gameEndCanvas;
 

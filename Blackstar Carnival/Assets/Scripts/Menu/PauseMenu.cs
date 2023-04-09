@@ -48,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         if(scene == "Can Crashers") { CanCrasherGameManager.Instance.SetGameState(CanCrasherGameState.Menu); }
         if(scene == "Hammer Hitter") { HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Menu); }
+        //if(scene == "Drum Duelist") { DrumDuelistGameManager.Instance.SetGameState(DrumDuelistGameState.Menu); }
         
         // displays the pause panel
         pauseMenu.SetActive(true);
@@ -67,6 +68,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         if(scene == "Can Crashers") { CanCrasherGameManager.Instance.SetGameState(CanCrasherGameState.Playing); }
         if(scene == "Hammer Hitter") { HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Playing); }
+        //if(scene == "Drum Duelist") { DrumDuelistGameManager.Instance.SetGameState(DrumDuelistGameState.Playing); }
         // hide the menu
         pauseMenu.SetActive(false);
     }
