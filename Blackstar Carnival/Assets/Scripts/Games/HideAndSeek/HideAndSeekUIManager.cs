@@ -8,6 +8,7 @@ public class HideAndSeekUIManager : MonoBehaviour
     public GameObject WinPanel;
     public GameObject menuPanel;
     public GameObject player;
+    public GameObject pause;
     public static HideAndSeekUIManager Instance;
     // Start is called before the first frame update
 
@@ -27,12 +28,14 @@ public class HideAndSeekUIManager : MonoBehaviour
         LosePanel.SetActive(true);
         WinPanel.SetActive(false);
         player.SetActive(false);
+        pause.SetActive(false);
     }
 
     public void ShowWinPanel(){
         LosePanel.SetActive(false);
         WinPanel.SetActive(true);
         player.SetActive(false);
+        pause.SetActive(false);
     }
 
     public void ShowPlayingPanel(){
@@ -40,5 +43,6 @@ public class HideAndSeekUIManager : MonoBehaviour
         WinPanel.SetActive(false);
         menuPanel.SetActive(false);
         player.SetActive(true);
+        pause.SetActive(true);
     }
 }

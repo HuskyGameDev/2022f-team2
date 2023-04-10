@@ -60,12 +60,9 @@ public class HammerHitterGameManager : MonoBehaviour
 
             case HammerHitterGameState.Win:
                 HammerHitterUIManager.Instance.ShowWinPanel();
-
                 StarBucksManager.Instance.UpdateBucks(1);
-                //manager.UpdateBucks(1);
-                //Debug.Log("Added star buck");
-
                 break;
+                
             case HammerHitterGameState.Menu:
                 HammerHitterUIManager.Instance.ShowMenuPanel();
                 break;

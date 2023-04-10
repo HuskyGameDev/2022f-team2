@@ -32,4 +32,10 @@ public class StarBucksManager : MonoBehaviour
         Debug.Log("Updating bucks, total: " + starBucks);
         starBucks += add;
     }
+
+    public void ResetBucks()
+    {
+        // when the game is exited we want to reset the star bucks
+        
+    }
 }
