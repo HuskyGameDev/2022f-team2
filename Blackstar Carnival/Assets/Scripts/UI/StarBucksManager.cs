@@ -36,6 +36,11 @@ public class StarBucksManager : MonoBehaviour
     public void ResetBucks()
     {
         // when the game is exited we want to reset the star bucks
-        
+        starBucks = 0;
+    }
+
+    public int GetBucks()
+    {
+        return starBucks;
     }
 }

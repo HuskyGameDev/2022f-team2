@@ -11,6 +11,8 @@ public class ballController : MonoBehaviour{
     private Rigidbody rb;
     public GameObject ball;
     public GameObject bell;
+    public AudioSource hitSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class ballController : MonoBehaviour{
         }
 
     void hitBall(){
+            GetComponent<AudioSource>().Play();
             hitCheck = 1;
             var vel = rb.velocity;
             vel.y = Strengthmask.fillAmount * 15f;
@@ -43,7 +46,7 @@ public class ballController : MonoBehaviour{
 
     void OnCollisionEnter(Collision col){
         if(col.gameObject == bell){
-            //GetComponent<AudioSource>().Play();
+            hitSound.Play();
             rb.useGravity = false;
             rb.velocity = new Vector3(0f, 0f, 0f);
             HammerHitterGameManager.Instance.SetGameState(HammerHitterGameState.Win);
