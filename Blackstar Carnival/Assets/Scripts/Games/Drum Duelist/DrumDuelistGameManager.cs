@@ -24,34 +24,6 @@ public class DrumDuelistGameManager : MonoBehaviour
     public float tempoFactor;
 
     private bool debug;
-    
-    public enum DrumDuelistGameState
-    {
-        Menu,
-        Playing,
-    }
-
-    public static DrumDuelistGameManager Instance;
-    private DrumDuelistGameState _gameState = DrumDuelistGameState.Playing;
-    public DrumDuelistGameState GameState
-    {
-        get => _gameState;
-        set => _gameState = value;    
-    }
-    public void SetGameState(DrumDuelistGameState state)
-    {
-        _gameState = state;
-        switch (state)
-        {
-            case DrumDuelistGameState.Menu:
-                DrumDuelistUIManager.Instance.ShowMenuPanel();
-                break;
-
-            case DrumDuelistGameState.Playing:
-                DrumDuelistUIManager.Instance.ShowPlayingPanel();
-                break;
-        }
-    }
 
     void OnEnable()
     {
