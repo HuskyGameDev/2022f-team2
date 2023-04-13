@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32422cf44a26ead4780f5a677af68c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisBear: {fileID: 59123459}
   rend: {fileID: 59123463}
   prizeMenu: {fileID: 1532305488}
   prompt: {fileID: 134425375}
@@ -276,6 +277,7 @@ MonoBehaviour:
   UI: {fileID: 1303825763}
   shown: {fileID: 613327356}
   clicked: {fileID: 59123463}
+  chosen: 0
 --- !u!1 &107987180
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32422cf44a26ead4780f5a677af68c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisBear: {fileID: 107987180}
   rend: {fileID: 107987184}
   prizeMenu: {fileID: 1532305488}
   prompt: {fileID: 134425375}
@@ -429,6 +432,7 @@ MonoBehaviour:
   UI: {fileID: 1303825763}
   shown: {fileID: 613327356}
   clicked: {fileID: 107987184}
+  chosen: 0
 --- !u!1 &134425375
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +733,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Do  you  want  this  prize ?
 
-    ( 10  Star  bucks )'
+    ( 5  Star  bucks )'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f6867927b8a4f6e4e871373dfb424a3d, type: 2}
   m_sharedMaterial: {fileID: 597554134810309089, guid: f6867927b8a4f6e4e871373dfb424a3d, type: 2}
@@ -1913,6 +1917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32422cf44a26ead4780f5a677af68c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisBear: {fileID: 965893772}
   rend: {fileID: 965893776}
   prizeMenu: {fileID: 1532305488}
   prompt: {fileID: 134425375}
@@ -1920,6 +1925,7 @@ MonoBehaviour:
   UI: {fileID: 1303825763}
   shown: {fileID: 613327356}
   clicked: {fileID: 965893776}
+  chosen: 0
 --- !u!1 &1004933017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,9 +2111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prizeMenu: {fileID: 1532305488}
+  prizeVal: 0
   prompt: {fileID: 134425375}
   rejectPanel: {fileID: 1451890487}
   UI: {fileID: 1303825763}
+  bought: 0
 --- !u!1 &1151583404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,7 +2240,7 @@ RectTransform:
   - {fileID: 218176855}
   - {fileID: 2054089916}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2486,6 +2494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32422cf44a26ead4780f5a677af68c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisBear: {fileID: 1451259272}
   rend: {fileID: 1451259275}
   prizeMenu: {fileID: 1532305488}
   prompt: {fileID: 134425375}
@@ -2493,6 +2502,7 @@ MonoBehaviour:
   UI: {fileID: 1303825763}
   shown: {fileID: 613327356}
   clicked: {fileID: 1451259275}
+  chosen: 0
 --- !u!1 &1451890487
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,13 +2553,14 @@ GameObject:
   - component: {fileID: 1532305491}
   - component: {fileID: 1532305490}
   - component: {fileID: 1532305489}
+  - component: {fileID: 1532305493}
   m_Layer: 5
   m_Name: PrizeMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1532305489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2627,13 +2638,25 @@ RectTransform:
   - {fileID: 613327353}
   - {fileID: 2045824275}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1532305493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532305488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc01e13b5abf5c47bb2b6b8d8b33d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1734004782
 GameObject:
   m_ObjectHideFlags: 0

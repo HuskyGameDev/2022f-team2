@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
 
     public GameObject pauseMenu;
+    public GameObject inventory;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // only move if the pause menu is not up lol
-        if(!(pauseMenu.activeInHierarchy))
+        if(!(pauseMenu.activeInHierarchy) && !(inventory.activeInHierarchy))
         {
             ProcessInputs();
 
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // only move if the pause menu is not up lol
-        if(!(pauseMenu.activeInHierarchy))
+        if(!(pauseMenu.activeInHierarchy) && !(inventory.activeInHierarchy))
         {
             // Physics Calculations
             Move();
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void ProcessInputs()
     {
         // only move if the pause menu is not up lol
-        if(!(pauseMenu.activeInHierarchy))
+        if(!(pauseMenu.activeInHierarchy)&& !(inventory.activeInHierarchy))
         {
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");
@@ -58,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         // only move if the pause menu is not up lol
-        if(!(pauseMenu.activeInHierarchy))
+        if(!(pauseMenu.activeInHierarchy)&& !(inventory.activeInHierarchy))
         {
             rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
         }

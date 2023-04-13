@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BlackstarCarnival.Games.CanCrasher
 {
@@ -80,6 +81,11 @@ namespace BlackstarCarnival.Games.CanCrasher
         public void UpdateBallsLeft(int ballsLeft)
         {
             BallsLeftPanel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = ballsLeft.ToString();
+        }
+
+        public void playAgain()
+        {
+            SceneManager.LoadScene("Can Crashers");
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class HammerHitterUIManager : MonoBehaviour
@@ -81,5 +82,10 @@ public class HammerHitterUIManager : MonoBehaviour
 
     public void PauseBar(){
         playCheck=1;
+    }
+
+    public void playAgain()
+    {
+        SceneManager.LoadScene("Hammer Hitter");
     }
 }

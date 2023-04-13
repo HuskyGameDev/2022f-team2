@@ -5,24 +5,32 @@ using UnityEngine;
 public class prizeMenuManager : MonoBehaviour
 {
     public GameObject prizeMenu;
-    private int prizeVal;
+    public int prizeVal;
     public GameObject prompt;
     public GameObject rejectPanel;
     public GameObject UI;
+    public bool bought;
+
+    // makes an object for the bear
+    public static prizeMenuManager Instance;
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        prizeVal = 10;
+        bought = false;
+        prizeVal = 5;
         prompt.SetActive(true);
         rejectPanel.SetActive(false);
         UI.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     // when the player clicks yes
@@ -31,10 +39,12 @@ public class prizeMenuManager : MonoBehaviour
         // if the player has enough star bucks for the prize
         if(StarBucksManager.Instance.GetBucks() == prizeVal)
         {
-            // add prize
+            bought = true;
+            ExitMenu();
         }
         else
         {
+            bought = false;
             prompt.SetActive(false);
             rejectPanel.SetActive(true);
         }
