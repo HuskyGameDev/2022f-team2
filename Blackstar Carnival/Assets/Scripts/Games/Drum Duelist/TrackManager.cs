@@ -34,7 +34,7 @@ public class TrackManager : MonoBehaviour
         {
             return false;
         }
-        if (getY(beatQueue.Peek()) < (trackRectTransform.rect.height * -1) - hitThreshold/2)
+        if (getY(beatQueue.Peek()) < -1 * trackRectTransform.rect.height)
         {
             Debug.Log(color + " beat naturally deleted at y =" + getY(beatQueue.Peek()));
             Destroy(beatQueue.Dequeue());
