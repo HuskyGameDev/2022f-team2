@@ -32,7 +32,7 @@ public class ballController : MonoBehaviour{
 
     void resetBall(){
             rb.useGravity = false;
-            ball.transform.position = new Vector3(0f, -1.829f, 10.966f);
+            ball.transform.position = new Vector3(0f, -1.88f, 10.966f);
         }
 
     void hitBall(){
