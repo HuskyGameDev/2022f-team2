@@ -12,6 +12,8 @@ public class TrackManager : MonoBehaviour
     private RectTransform trackRectTransform;
     private Queue<GameObject> beatQueue = new Queue<GameObject>();
     private float hitThreshold;
+    public AudioSource hitSound;
+    public AudioSource missSound;
 
     public void Start()
     {
@@ -55,12 +57,14 @@ public class TrackManager : MonoBehaviour
         {
             Destroy(beatQueue.Dequeue());
             Debug.Log(color + " beat hit");
+            hitSound.Play();
             return true;
         }
         else
         {
             Destroy(beatQueue.Dequeue());
             Debug.Log(color + " beat missed");
+            missSound.Play();
             return false;
         }
     }
