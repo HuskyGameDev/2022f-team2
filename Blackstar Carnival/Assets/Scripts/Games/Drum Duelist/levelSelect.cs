@@ -26,7 +26,7 @@ public class levelSelect : MonoBehaviour
         tempoFactor = 0.6f;
         chordMode = false;
 
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < 120; i++) {
             int color = Random.Range(0, 4);
             addColor(color);
         }
