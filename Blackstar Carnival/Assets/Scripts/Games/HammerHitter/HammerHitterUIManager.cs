@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class HammerHitterUIManager : MonoBehaviour
 {
     public static HammerHitterUIManager Instance;
-    public GameObject StrengthBar; public Image Strengthmask; public float currentStrength; public float maxStrength;
+    public GameObject StrengthBar; public Image Strengthmask; public float currentStrength; public float maxStrength; public int reverse = 0;
     public GameObject LosePanel;
     public GameObject WinPanel;
     private int playCheck = 0;
@@ -47,12 +47,23 @@ public class HammerHitterUIManager : MonoBehaviour
 
     void GetCurrentFill(){
         if(playCheck == 0){
-            if(currentStrength>100f){
-                currentStrength = 0f;
+            if(currentStrength>=100f){
+                reverse = 1;
             }
-            currentStrength = currentStrength + .1f;
-            float fillAmount = (float)currentStrength / (float) maxStrength;
-            Strengthmask.fillAmount = fillAmount;
+            if(currentStrength<=0f){
+                reverse = 0;
+            }
+            if(reverse == 0){
+                currentStrength = currentStrength + .3f;
+                float fillAmount = (float)currentStrength / (float) maxStrength;
+                Strengthmask.fillAmount = fillAmount;
+            }
+            if(reverse == 1){
+                currentStrength = currentStrength - .3f;
+                float fillAmount = (float)currentStrength / (float) maxStrength;
+                Strengthmask.fillAmount = fillAmount;
+            }
+
         }
     }
 

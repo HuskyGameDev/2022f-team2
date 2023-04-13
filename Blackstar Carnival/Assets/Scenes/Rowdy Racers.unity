@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 157918411}
   - component: {fileID: 157918410}
   - component: {fileID: 157918409}
+  - component: {fileID: 157918412}
   m_Layer: 5
   m_Name: Racer 1 Button
   m_TagString: Untagged
@@ -257,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157918407}
   m_CullTransparentMesh: 1
+--- !u!114 &157918412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157918407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a376d615643ca47bfff79d342be188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClick: {fileID: 8300000, guid: 94edccef62f3f90449214e00c5701b28, type: 3}
 --- !u!1 &329997241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,6 +1180,7 @@ GameObject:
   - component: {fileID: 860754166}
   - component: {fileID: 860754165}
   - component: {fileID: 860754164}
+  - component: {fileID: 860754167}
   m_Layer: 5
   m_Name: Play Again
   m_TagString: Untagged
@@ -1288,6 +1303,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860754162}
   m_CullTransparentMesh: 1
+--- !u!114 &860754167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860754162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a376d615643ca47bfff79d342be188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClick: {fileID: 8300000, guid: 94edccef62f3f90449214e00c5701b28, type: 3}
 --- !u!1 &1060291581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1463,7 @@ GameObject:
   - component: {fileID: 1114032048}
   - component: {fileID: 1114032047}
   - component: {fileID: 1114032046}
+  - component: {fileID: 1114032049}
   m_Layer: 5
   m_Name: Racer 3 Button
   m_TagString: Untagged
@@ -1557,6 +1586,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114032044}
   m_CullTransparentMesh: 1
+--- !u!114 &1114032049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114032044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a376d615643ca47bfff79d342be188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClick: {fileID: 8300000, guid: 94edccef62f3f90449214e00c5701b28, type: 3}
 --- !u!1 &1154295160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,6 +1850,7 @@ GameObject:
   - component: {fileID: 1189640171}
   - component: {fileID: 1189640173}
   - component: {fileID: 1189640172}
+  - component: {fileID: 1189640174}
   m_Layer: 5
   m_Name: BettingPanel
   m_TagString: Untagged
@@ -1879,6 +1922,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189640170}
   m_CullTransparentMesh: 1
+--- !u!114 &1189640174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189640170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a376d615643ca47bfff79d342be188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClick: {fileID: 8300000, guid: 94edccef62f3f90449214e00c5701b28, type: 3}
 --- !u!1 &1216519136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,6 +2301,7 @@ GameObject:
   - component: {fileID: 1422023486}
   - component: {fileID: 1422023485}
   - component: {fileID: 1422023484}
+  - component: {fileID: 1422023487}
   m_Layer: 5
   m_Name: Racer 2 Button
   m_TagString: Untagged
@@ -2367,6 +2424,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422023482}
   m_CullTransparentMesh: 1
+--- !u!114 &1422023487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422023482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a376d615643ca47bfff79d342be188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClick: {fileID: 8300000, guid: 94edccef62f3f90449214e00c5701b28, type: 3}
 --- !u!1 &1463108649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2827,6 +2897,7 @@ GameObject:
   - component: {fileID: 1980577818}
   - component: {fileID: 1980577817}
   - component: {fileID: 1980577816}
+  - component: {fileID: 1980577819}
   m_Layer: 5
   m_Name: Racer 4 Button
   m_TagString: Untagged
@@ -2949,6 +3020,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980577814}
   m_CullTransparentMesh: 1
+--- !u!114 &1980577819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980577814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a376d615643ca47bfff79d342be188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClick: {fileID: 8300000, guid: 94edccef62f3f90449214e00c5701b28, type: 3}
 --- !u!1 &1998331052
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,6 +3180,7 @@ GameObject:
   - component: {fileID: 2096264426}
   - component: {fileID: 2096264425}
   - component: {fileID: 2096264424}
+  - component: {fileID: 2096264427}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -3219,6 +3304,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096264422}
   m_CullTransparentMesh: 1
+--- !u!114 &2096264427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096264422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a376d615643ca47bfff79d342be188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonClick: {fileID: 8300000, guid: 94edccef62f3f90449214e00c5701b28, type: 3}
 --- !u!1 &2110146420
 GameObject:
   m_ObjectHideFlags: 0
