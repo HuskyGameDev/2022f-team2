@@ -37,7 +37,7 @@ public class prizeMenuManager : MonoBehaviour
     public void ChoosePrize()
     {
         // if the player has enough star bucks for the prize
-        if(StarBucksManager.Instance.GetBucks() == prizeVal)
+        if(StarBucksManager.Instance.GetBucks() >= prizeVal)
         {
             bought = true;
             ExitMenu();

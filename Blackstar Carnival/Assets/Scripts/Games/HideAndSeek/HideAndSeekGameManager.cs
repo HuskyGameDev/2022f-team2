@@ -12,6 +12,8 @@ public enum HideAndSeekGameState
 
 public class HideAndSeekGameManager : MonoBehaviour
 {
+    public AudioSource found;
+
     int winningTent;
     public static HideAndSeekGameManager Instance;
 
@@ -19,6 +21,7 @@ public class HideAndSeekGameManager : MonoBehaviour
     void Start()
     {
         setTent();
+        //found = GetComponent<AudioSource>();
     }
 
     private HideAndSeekGameState _gameState = HideAndSeekGameState.Playing;
@@ -46,32 +49,41 @@ public class HideAndSeekGameManager : MonoBehaviour
 
     public void checkResults(GameObject g){
         switch(winningTent){
-                
                 case 1:
                     if(g.transform.parent.gameObject.name == "RedTent1"){
-                        SetGameState(HideAndSeekGameState.Win);
+                        StartCoroutine(endGame(true));
                     }
                     break;
                 case 2:
-                    if(g.transform.parent.gameObject.name == "RedTent1"){
-                        SetGameState(HideAndSeekGameState.Win);
+                    if(g.transform.parent.gameObject.name == "RedTent2"){
+                        StartCoroutine(endGame(true));
                     }
                     break;
                 case 3:
-                    if(g.transform.parent.gameObject.name == "RedTent1"){
-                        SetGameState(HideAndSeekGameState.Win);
+                    if(g.transform.parent.gameObject.name == "RedTent3"){
+                        StartCoroutine(endGame(true));
                     }
                     break;
                 case 4:
-                    if(g.transform.parent.gameObject.name == "RedTent1"){
-                        SetGameState(HideAndSeekGameState.Win);
+                    if(g.transform.parent.gameObject.name == "RedTent4"){
+                        StartCoroutine(endGame(true));
                     }
                     break;
                 default:
-                    SetGameState(HideAndSeekGameState.Lose);
+                    StartCoroutine(endGame(false));
                     break;
-            
         }
+    }
+
+    IEnumerator endGame(bool win)
+    {
+        if(win)
+        {
+            found.Play();
+            yield return new WaitForSeconds(1);
+            SetGameState(HideAndSeekGameState.Win);
+        }
+        else { SetGameState(HideAndSeekGameState.Lose); }
     }
 
     public void SetGameState(HideAndSeekGameState state)

@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private AudioSource _musicSource, _sfxSource;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance == null)
         {

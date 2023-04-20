@@ -43,6 +43,8 @@ public class CanCrasherSwipeController :  MonoBehaviour
         // End swipe
         if (Input.GetMouseButtonUp(0) && canThrow)
         {
+            Ball.GetComponent<AudioSource>().Play();
+
             _throwTime = Time.time - _throwTime;
             _direction = (Input.mousePosition - _direction);
             _direction.x /= Screen.width;
@@ -57,7 +59,6 @@ public class CanCrasherSwipeController :  MonoBehaviour
             Ball.GetComponent<Rigidbody>().isKinematic = false;
             Ball.GetComponent<Rigidbody>().AddForce(_direction * _throwSpeed, ForceMode.Impulse);
             Ball = null;
-            // TODO: Play ball throw sound 
         }
     }
 }

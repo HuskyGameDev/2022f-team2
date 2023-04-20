@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject inventory;
 
+    public AudioSource footsteps;
+    public bool IsMoving;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // only move if the pause menu is not up lol
         if(!(pauseMenu.activeInHierarchy) && !(inventory.activeInHierarchy))
-        {
+        {    
             ProcessInputs();
 
             animator.SetFloat("Horizontal", moveDirection.x);
@@ -51,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
         {
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");
+
+            if(moveX != 0 || moveY != 0) { IsMoving = true; }
+            else { IsMoving = false; }
+
+            if (IsMoving && !footsteps.isPlaying) { footsteps.Play(); }
+            if (!IsMoving) { footsteps.Stop(); }
 
             moveDirection = new Vector2(moveX, moveY).normalized;
         }

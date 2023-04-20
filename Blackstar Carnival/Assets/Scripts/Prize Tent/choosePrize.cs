@@ -20,7 +20,7 @@ public class choosePrize : MonoBehaviour
 
     void Start()
     {
-        chosen = false;
+        this.chosen = false;
         // sets up the menus
         prizeMenu.SetActive(false);
         prompt.SetActive(false);
@@ -36,17 +36,15 @@ public class choosePrize : MonoBehaviour
     void Update()
     {
         // if the bear that this script is on was chosen and bought
-        if(chosen && prizeMenuManager.Instance.bought)
+        if(this.chosen && prizeMenuManager.Instance.bought)
         {
-            // puts the bear in the players inventory
-            InventoryManager.Instance.addItem(thisBear.name);
-
-            // takes the bear off the scene
-            thisBear.SetActive(false);
-
-            chosen = false;
-
+            // takes 5 star bucks from the inventory
+            StarBucksManager.Instance.UpdateBucks(-5);
+            this.chosen = false;
             prizeMenuManager.Instance.bought = false;
+            
+            // gets rid of the object
+            Destroy(thisBear);
         }
     }
 
@@ -66,7 +64,7 @@ public class choosePrize : MonoBehaviour
     {
         if(isColliding)
         {
-            chosen = true;
+            this.chosen = true;
             UI.SetActive(false);
             // makes the shown bear render the clicked bears sprite
             shown.sprite = clicked.sprite;
@@ -77,5 +75,11 @@ public class choosePrize : MonoBehaviour
             prompt.SetActive(true);
             reject.SetActive(false);
         }
+        else { this.chosen = false; }
+    }
+
+    public void notChosen()
+    {
+        chosen = false;
     }
 }

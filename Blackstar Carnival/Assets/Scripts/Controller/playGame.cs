@@ -51,6 +51,9 @@ public class playGame : MonoBehaviour
                 case "DD_Tent":
                     SceneManager.LoadScene("Drum Duelist");
                     break;
+                case "HS_Tent":
+                    SceneManager.LoadScene("Hide And Seek");
+                    break;
                 default:
                     break;
             }
