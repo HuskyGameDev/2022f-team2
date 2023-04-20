@@ -5,7 +5,8 @@ Goal and Controls
 =================
 Your goal in this game is to play some fun carnival games, win tickets, and buy the big prize!
 Use WASD or the arrow keys to move around, and E to interact with things.
-"Can Crashers" and "Rowdy Racers" both use mouse control.
+"Can Crashers" and "Rowdy Racers" both use mouse control. "Drum Duelist", "Hammer Hitter", and
+"Hide and Seek" use keyboard controls.
 
 
 =================
@@ -13,10 +14,17 @@ Installation
 =================
 Head to Releases, download the .zip, unzip the archive, then run the executable.
 
+
 =================
 Credits
 =================
-Colin Van Deldan - Level Designer, Programmer
-Finley Green - Artist
-Leonardo LaRouche - Programmer
-Quentin Ross - Level Designer, Programmer
+Colin Van Deldan-----Level Designer, Programmer-----Fall 2022, Spring 2023
+Finley Green---------Artist, Programmer-------------Fall 2022, Spring 2023
+Leonardo LaRouche----Programmer---------------------Fall 2022, Spring 2023
+Quentin Ross---------Level Designer, Programmer-----Fall 2022
+Caleb Leavesley------Artist, Programmer-------------Spring 2023
+John McDevitt--------Programmer---------------------Spring 2023
+Caden Wilfong--------Programmer---------------------Spring 2023
+Alex Hernandez-------Sound--------------------------Fall 2022, Spring 2023
+Rowdy Vyverberg------Sound--------------------------Fall 2022
+Isabella Capanda-----Sound--------------------------Spring 2023
